@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbdiasxa887ey"]
+
+[ext_resource type="Script" uid="uid://dujk068bss17i" path="res://main/scripts/slime.gd" id="1_3ij1m"]
+[ext_resource type="Texture2D" uid="uid://hoqlpegbip4" path="res://assetes/images/Slimeball_JE2_BE2-1.png.png" id="2_igqmi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h32wm"]
+size = Vector2(80, 64)
+
+[node name="Slime" type="CharacterBody2D"]
+collision_mask = 14
+script = ExtResource("1_3ij1m")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h32wm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(4.76837e-07, 2.86102e-06)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("2_igqmi")
+
+[node name="Button" type="Button" parent="Sprite2D"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -32.0
+offset_top = -26.0
+offset_right = -32.0
+offset_bottom = -38.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="button_down" from="Sprite2D/Button" to="." method="_on_button_button_down"]
+[connection signal="button_up" from="Sprite2D/Button" to="." method="_on_button_button_up"]

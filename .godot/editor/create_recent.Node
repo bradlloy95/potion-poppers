@@ -1,0 +1,15 @@
+CPUParticles2D
+LightOccluder2D
+DirectionalLight2D
+PointLight2D
+Area2D
+Node2D
+CharacterBody2D
+AudioStreamPlayer2D
+CollisionShape2D
+Sprite2D
+StaticBody2D
+ColorRect
+Button
+RigidBody2D
+Panel

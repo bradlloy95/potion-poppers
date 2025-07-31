@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://vg3i5mlo2iso"]
+
+[ext_resource type="Script" uid="uid://v8h5v3qur2kx" path="res://test/point_light_2d.gd" id="1_h6ixj"]
+[ext_resource type="Texture2D" uid="uid://sxqlpjs2dddo" path="res://assetes/pngtree-cartoon-2d-fire-flame-png-image_8466464.png" id="1_l367q"]
+
+[node name="Node2D" type="Node2D"]
+position = Vector2(32, 16)
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(1, 0.682353, 0.258824, 1)
+range_z_min = 5
+range_z_max = 10
+shadow_enabled = true
+texture = ExtResource("1_l367q")
+script = ExtResource("1_h6ixj")

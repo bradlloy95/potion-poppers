@@ -1,0 +1,25 @@
+[gd_scene load_steps=2 format=3 uid="uid://btmgs7c8knkq0"]
+
+[ext_resource type="Script" uid="uid://du7ycflbop6xb" path="res://main/scripts/start_menu.gd" id="1_jwbto"]
+
+[node name="StartMenu" type="Node2D"]
+script = ExtResource("1_jwbto")
+
+[node name="StartButton" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 128.0
+offset_right = 768.0
+offset_bottom = 256.0
+theme_override_font_sizes/font_size = 50
+text = "Start Game!"
+
+[node name="QuitButton" type="Button" parent="."]
+offset_left = 384.0
+offset_top = 384.0
+offset_right = 768.0
+offset_bottom = 512.0
+theme_override_font_sizes/font_size = 50
+text = "Quit Game!"
+
+[connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
