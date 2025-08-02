@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://7o4movj7xroa"]
+
+[ext_resource type="Texture2D" uid="uid://cojg0g0rvo6js" path="res://large_bubble-removebg-preview.png" id="1_u7lhq"]
+
+[node name="Bubbles" type="CPUParticles2D"]
+amount = 2
+texture = ExtResource("1_u7lhq")
+lifetime = 2.0
+randomness = 0.33
+lifetime_randomness = 0.45
+emission_shape = 2
+emission_sphere_radius = 15.0
+direction = Vector2(6, 0)
+spread = 123.18
+gravity = Vector2(0, -100)
+initial_velocity_min = 1.0
+initial_velocity_max = 10.0
+scale_amount_min = 0.0
+scale_amount_max = 0.7

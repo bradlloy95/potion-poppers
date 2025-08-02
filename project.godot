@@ -13,7 +13,6 @@ config_version=5
 config/name="Potion Popper"
 run/main_scene="uid://btmgs7c8knkq0"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://assetes/images/icon.svg"
 
 [autoload]
 

@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt6t4lw0t0ytj"]
+
+[ext_resource type="Texture2D" uid="uid://cojg0g0rvo6js" path="res://large_bubble-removebg-preview.png" id="1_fi2en"]
+
+[node name="splashParticles" type="CPUParticles2D"]
+emitting = false
+amount = 25
+texture = ExtResource("1_fi2en")
+lifetime = 0.6
+one_shot = true
+explosiveness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector2(0, -1)
+gravity = Vector2(0, 1000)
+initial_velocity_min = 200.0
+initial_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color = Color(0, 0.784314, 0.0941176, 1)

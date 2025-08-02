@@ -7,6 +7,7 @@ var recipe
 var random_item
 var lives := 3
 var score := 0
+var added_ingredients = []
 
 func _ready() -> void:
 	$PauseMenu.visible = is_paused
@@ -26,6 +27,8 @@ func _physics_process(_delta: float) -> void:
 	if  not is_gameOver:
 		$HUD/CountDown.text = str($CountdownTimer.time_left)
 		$HUD/Score.text = "Score " + str(score)
+		
+		update_recipe()
 		# listen for pause button to be pressed
 		if Input.is_action_just_pressed("pause"):
 			if not is_paused:
@@ -51,6 +54,7 @@ func _physics_process(_delta: float) -> void:
 			
 		if recipe.size() == 0:
 			score += 1
+			play_potion_made()
 			get_random_recipe()
 		
 	else:
@@ -59,38 +63,53 @@ func _physics_process(_delta: float) -> void:
 		
 
 func play_waterDrop():
-	$WaterDrop.play()
-
+	$Sounds/WaterDrop.play()
+func play_burn():
+	$Sounds/Burn.play()
+func play_potion_made():
+	$Sounds/BottleUp.play()
+func play_glass_break():
+	$Sounds/GlassBreak.play()
+	
+	
 func gameover():
 	$CountdownTimer.stop()
 	$HUD.visible = false
 	$Artwork.visible = false
 	$Gamover.visible = is_gameOver
 	$Gamover/FinalScore.text = "Final Score: " + str(score)
+	$Sounds/background.stop()
 	
-func check_recipe(ingredient):
-	
+func check_recipe(ingredient):	
 	if ingredient in recipe:
 		play_waterDrop()
 		recipe.erase(ingredient)
-		# make correct noise
-		
+		added_ingredients.append(ingredient)
 	else:
+		play_burn()
+		get_random_recipe()		
 		lives -= 1
 		$HUD/lives.text = "Lives " + str(lives)
 		# make error noise
-
+func update_recipe():
+	#update recipe
+		var recipe_str = ""
+		for item in recipe:
+			recipe_str  = recipe_str  + item + "\n"
+		
+		if added_ingredients:
+			for item in added_ingredients:
+				recipe_str = recipe_str + "[s]" + item + "[/s]"
+		$HUD/Recipe.text = recipe_str
 func get_random_recipe():
 	# get ramdom potion 
 	random_item = Global.postions[randi() % Global.postions.size()]
 	# get the potions recipe
 	recipe = Global.postion_recipes[random_item].duplicate(true)
 	$HUD/Potion.text = random_item
-	var recipe_str = ""
-	for item in recipe:
-		recipe_str  = recipe_str  + item + "\n"
-	print(random_item)
-	$HUD/Recipe.text = recipe_str
+	#reset added list
+	added_ingredients = []
+	update_recipe()
 	$CountdownTimer.start()
 
 
@@ -109,10 +128,11 @@ func _on_quit_button_pressed() -> void:
 
 
 func _on_timer_timeout() -> void:
-	print("time out")
 	lives -= 1
 	$HUD/lives.text = "Lives " + str(lives)
 	#play timeout sound
+	get_random_recipe()
+	play_glass_break()
 	$CountdownTimer.start()
 
 
@@ -122,21 +142,12 @@ func _on_main_menu_btn_pressed() -> void:
 
 func _on_artwork_leaf_drop() -> void:
 	check_recipe("Leaf")
-	
-
-
 func _on_artwork_slime_drop() -> void:
 	check_recipe("Slime")
-	
-
 func _on_artwork_mushroom_drop() -> void:
 	check_recipe("Mushroom")
-
-
 func _on_artwork_ember_drop() -> void:
 	check_recipe("Ember Root")
-
-
 func _on_artwork_crystal_drop() -> void:
 	check_recipe("Crystal Berry")
 
@@ -144,5 +155,8 @@ func _on_artwork_crystal_drop() -> void:
 
 
 
+
+
 func _on_artwork_ingredient_drop(ingredient: Variant) -> void:
 	check_recipe(ingredient.name_id)
+	print(ingredient.name_id +" has entered the cauldron")

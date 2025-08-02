@@ -1,25 +1,45 @@
-[gd_scene load_steps=14 format=3 uid="uid://kog84r5roep0"]
+[gd_scene load_steps=20 format=3 uid="uid://kog84r5roep0"]
 
-[ext_resource type="PackedScene" uid="uid://n4nxarg8nc6r" path="res://main/scenes/ingredients/ember_root.tscn" id="1_3qcxw"]
 [ext_resource type="Script" uid="uid://c6ljjojpuqn1p" path="res://main/scripts/artwork.gd" id="1_tf4bt"]
-[ext_resource type="Texture2D" uid="uid://dyayeo1uqcxcw" path="res://assetes/images/cauldron-1.png.png" id="2_b82wm"]
 [ext_resource type="Texture2D" uid="uid://iw21m3yhy2px" path="res://assetes/background.jpg" id="2_beiha"]
-[ext_resource type="PackedScene" uid="uid://byhsphpychl6i" path="res://main/scenes/ingredients/leaf.tscn" id="3_3kun3"]
-[ext_resource type="PackedScene" uid="uid://cstjrv1h2yq5h" path="res://main/scenes/ingredients/mushroom.tscn" id="4_rpd1k"]
-[ext_resource type="PackedScene" uid="uid://dbdiasxa887ey" path="res://main/scenes/ingredients/slime.tscn" id="5_uj2bj"]
-[ext_resource type="PackedScene" uid="uid://b5tyhxq8a52vg" path="res://main/scenes/ingredients/crystal.tscn" id="6_0303i"]
-[ext_resource type="Script" uid="uid://c3ohyafpvyv8d" path="res://main/scenes/point_light_2d.gd" id="9_h6cmh"]
-[ext_resource type="Texture2D" uid="uid://cwg6d1w6aakmv" path="res://assetes/images/parchment_1-1.png.png" id="10_4eoem"]
+[ext_resource type="Texture2D" uid="uid://dqr6ahvm0kvmy" path="res://assetes/images/cauldron-removebg-preview.png" id="3_4eoem"]
+[ext_resource type="PackedScene" uid="uid://bfbrwohdbtw5h" path="res://main/scenes/ingredient.tscn" id="4_fnfxh"]
+[ext_resource type="Texture2D" uid="uid://chygyc1ir8b0c" path="res://assetes/images/ingredients/leaf.png" id="5_4eoem"]
+[ext_resource type="Texture2D" uid="uid://kysgxbvrra32" path="res://assetes/images/ingredients/slime-removebg-preview-1.png.png" id="6_4eoem"]
+[ext_resource type="Texture2D" uid="uid://b6pdumj11gdwj" path="res://assetes/images/ingredients/mushroom.png" id="7_cntmf"]
+[ext_resource type="Texture2D" uid="uid://dm8dewhltw5yo" path="res://assetes/images/ingredients/ember (2).png" id="8_sq4ww"]
+[ext_resource type="Texture2D" uid="uid://cs34fslauj2rt" path="res://assetes/images/ingredients/crystal.png" id="9_4eoem"]
+[ext_resource type="Texture2D" uid="uid://dqi3rrv8oc3au" path="res://assetes/images/parchmentPaper.png" id="10_4eoem"]
+[ext_resource type="Texture2D" uid="uid://da0honoemn4gf" path="res://assetes/images/potions/speed.png" id="11_v6x6w"]
+[ext_resource type="Texture2D" uid="uid://208eyqxd4cmf" path="res://assetes/images/potions/fire.png" id="12_kmrme"]
+[ext_resource type="Texture2D" uid="uid://dijxgcsf01d8u" path="res://assetes/images/potions/healing.png" id="13_iu211"]
+[ext_resource type="Texture2D" uid="uid://cwteddd8xn2cw" path="res://assetes/images/potions/poison.png" id="14_jw1f3"]
+[ext_resource type="PackedScene" uid="uid://7o4movj7xroa" path="res://main/scenes/bubbles.tscn" id="15_kmrme"]
+[ext_resource type="PackedScene" uid="uid://bt6t4lw0t0ytj" path="res://main/scenes/splash_particles.tscn" id="16_iu211"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qcxw"]
-size = Vector2(304, 184)
+size = Vector2(177, 204)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m03l2"]
-size = Vector2(396, 28)
+size = Vector2(430, 28)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tf4bt"]
-radius = 40.0
-height = 304.0
+[sub_resource type="GDScript" id="GDScript_4eoem"]
+script/source = "extends DirectionalLight2D
+
+var flicker_time := 0.0
+var flicker_interval := 0.1
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	flicker_time -= delta
+	if flicker_time <=0:
+		energy = 0.9 + randf() * 0.2
+		color = Color(1.0, 0.75 + randf() * 0.1, 0.4)
+		flicker_time = randf_range(0.08, 0.18)
+"
 
 [node name="Artwork" type="Node2D"]
 script = ExtResource("1_tf4bt")
@@ -32,83 +52,121 @@ texture = ExtResource("2_beiha")
 [node name="DropBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropBox"]
-position = Vector2(640, 168)
+position = Vector2(646.5, 178)
 shape = SubResource("RectangleShape2D_3qcxw")
 
 [node name="ColorRect" type="ColorRect" parent="DropBox"]
-offset_left = 488.0
-offset_top = 64.0
-offset_right = 792.0
-offset_bottom = 187.0
+visible = false
+offset_left = 540.0
+offset_top = 78.0
+offset_right = 749.0
+offset_bottom = 205.0
 color = Color(1, 1, 1, 0.305882)
 
 [node name="Shelve" type="StaticBody2D" parent="."]
 collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Shelve"]
-position = Vector2(224, 190)
+position = Vector2(241, 190)
 shape = SubResource("RectangleShape2D_m03l2")
 
 [node name="Cauldron" type="Area2D" parent="."]
 position = Vector2(1, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Cauldron"]
-position = Vector2(639, 360)
-scale = Vector2(5.625, 4.875)
-texture = ExtResource("2_b82wm")
+position = Vector2(647, 400.18)
+scale = Vector2(0.643675, 0.5994)
+texture = ExtResource("3_4eoem")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Cauldron"]
-position = Vector2(655, 312)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_tf4bt")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron"]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(559, 312, 569, 311, 578, 309, 592, 308, 605, 308, 622, 306, 676, 307, 702, 309, 732, 311, 741, 315, 731, 320, 717, 323, 702, 326, 679, 327, 634, 326, 600, 325, 577, 321, 555, 314)
 
 [node name="Ingredients" type="Area2D" parent="."]
 
-[node name="Leaf" parent="Ingredients" instance=ExtResource("3_3kun3")]
-position = Vector2(136, 144)
+[node name="Leaf" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(64, 144)
+name_id = "Leaf"
+texture = ExtResource("5_4eoem")
 
-[node name="Mushroom" parent="Ingredients" instance=ExtResource("4_rpd1k")]
-position = Vector2(224, 144)
+[node name="Slime" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(152, 144)
+name_id = "Slime"
+texture = ExtResource("6_4eoem")
 
-[node name="Slime" parent="Ingredients" instance=ExtResource("5_uj2bj")]
-position = Vector2(312, 144)
+[node name="Mushroom" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(240, 144)
+name_id = "Mushroom"
+texture = ExtResource("7_cntmf")
 
-[node name="Crystal" parent="Ingredients" instance=ExtResource("6_0303i")]
-position = Vector2(400, 144)
+[node name="EmberRoot" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(328, 144)
+name_id = "Ember Root"
+texture = ExtResource("8_sq4ww")
 
-[node name="EmberRoot" parent="Ingredients" instance=ExtResource("1_3qcxw")]
-position = Vector2(56, 136)
+[node name="CrystalBerry" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(416, 144)
+name_id = "Crystal Berry"
+texture = ExtResource("9_4eoem")
 
-[node name="PointLight2D" type="DirectionalLight2D" parent="."]
+[node name="FireLight" type="DirectionalLight2D" parent="."]
 light_mask = 2
 position = Vector2(648, 504)
 color = Color(1, 0.682353, 0.133333, 1)
-script = ExtResource("9_h6cmh")
+script = SubResource("GDScript_4eoem")
 
-[node name="Parchment1-1_png" type="Sprite2D" parent="."]
-modulate = Color(0.396889, 0.396889, 0.396889, 1)
-position = Vector2(976, 200)
-rotation = 1.5708
-scale = Vector2(0.704518, 0.764223)
+[node name="ParchmentPaper" type="Sprite2D" parent="."]
+modulate = Color(0.662452, 0.662452, 0.662452, 1)
+position = Vector2(976, 152)
+scale = Vector2(1.05882, 1.05082)
 texture = ExtResource("10_4eoem")
 
+[node name="Speed" type="Sprite2D" parent="."]
+position = Vector2(208, 408)
+scale = Vector2(0.377551, 0.377551)
+texture = ExtResource("11_v6x6w")
+
+[node name="Fire" type="Sprite2D" parent="."]
+position = Vector2(128, 416)
+scale = Vector2(0.336735, 0.336735)
+texture = ExtResource("12_kmrme")
+
+[node name="Healing" type="Sprite2D" parent="."]
+position = Vector2(160, 424)
+scale = Vector2(0.377551, 0.377551)
+texture = ExtResource("13_iu211")
+
+[node name="Poison" type="Sprite2D" parent="."]
+position = Vector2(104, 464)
+scale = Vector2(0.459184, 0.459184)
+texture = ExtResource("14_jw1f3")
+
+[node name="Bubbles" parent="." instance=ExtResource("15_kmrme")]
+position = Vector2(648, 304)
+
+[node name="Bubbles2" parent="." instance=ExtResource("15_kmrme")]
+position = Vector2(704, 312)
+
+[node name="Bubbles3" parent="." instance=ExtResource("15_kmrme")]
+position = Vector2(584, 312)
+
+[node name="splashParticles" parent="." instance=ExtResource("16_iu211")]
+position = Vector2(647, 312)
+
 [connection signal="body_entered" from="DropBox" to="Ingredients/Leaf" method="_on_drop_box_body_entered"]
-[connection signal="body_entered" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_entered"]
 [connection signal="body_entered" from="DropBox" to="Ingredients/Slime" method="_on_drop_box_body_entered"]
-[connection signal="body_entered" from="DropBox" to="Ingredients/Crystal" method="_on_drop_box_body_entered"]
+[connection signal="body_entered" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_entered"]
 [connection signal="body_entered" from="DropBox" to="Ingredients/EmberRoot" method="_on_drop_box_body_entered"]
+[connection signal="body_entered" from="DropBox" to="Ingredients/CrystalBerry" method="_on_drop_box_body_entered"]
 [connection signal="body_exited" from="DropBox" to="Ingredients/Leaf" method="_on_drop_box_body_exited"]
-[connection signal="body_exited" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_exited"]
 [connection signal="body_exited" from="DropBox" to="Ingredients/Slime" method="_on_drop_box_body_exited"]
-[connection signal="body_exited" from="DropBox" to="Ingredients/Crystal" method="_on_drop_box_body_exited"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_exited"]
 [connection signal="body_exited" from="DropBox" to="Ingredients/EmberRoot" method="_on_drop_box_body_exited"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/CrystalBerry" method="_on_drop_box_body_exited"]
 [connection signal="body_entered" from="Cauldron" to="Ingredients/Leaf" method="_on_cauldron_body_entered"]
-[connection signal="body_entered" from="Cauldron" to="Ingredients/Mushroom" method="_on_cauldron_body_entered"]
 [connection signal="body_entered" from="Cauldron" to="Ingredients/Slime" method="_on_cauldron_body_entered"]
-[connection signal="body_entered" from="Cauldron" to="Ingredients/Crystal" method="_on_cauldron_body_entered"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/Mushroom" method="_on_cauldron_body_entered"]
 [connection signal="body_entered" from="Cauldron" to="Ingredients/EmberRoot" method="_on_cauldron_body_entered"]
-[connection signal="leaf_drop" from="Ingredients/Leaf" to="." method="_on_leaf_leaf_drop"]
-[connection signal="mushroom_drop" from="Ingredients/Mushroom" to="." method="_on_mushroom_mushroom_drop"]
-[connection signal="slime_drop" from="Ingredients/Slime" to="." method="_on_slime_slime_drop"]
-[connection signal="crystal_drop" from="Ingredients/Crystal" to="." method="_on_crystal_crystal_drop"]
-[connection signal="ember_drop" from="Ingredients/EmberRoot" to="." method="_on_ember_root_ember_drop"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/CrystalBerry" method="_on_cauldron_body_entered"]
+[connection signal="ingredient_drop" from="Ingredients/Leaf" to="." method="_on_leaf_ingredient_drop"]
+[connection signal="ingredient_drop" from="Ingredients/Slime" to="." method="_on_slime_ingredient_drop"]
