@@ -1,15 +1,15 @@
 [gd_scene load_steps=20 format=3 uid="uid://kog84r5roep0"]
 
 [ext_resource type="Script" uid="uid://c6ljjojpuqn1p" path="res://main/scripts/artwork.gd" id="1_tf4bt"]
-[ext_resource type="Texture2D" uid="uid://iw21m3yhy2px" path="res://assetes/background.jpg" id="2_beiha"]
-[ext_resource type="Texture2D" uid="uid://dqr6ahvm0kvmy" path="res://assetes/images/cauldron-removebg-preview.png" id="3_4eoem"]
+[ext_resource type="Texture2D" uid="uid://iw21m3yhy2px" path="res://assetes/images/backgrounds/background.jpg" id="2_beiha"]
+[ext_resource type="Texture2D" uid="uid://dqr6ahvm0kvmy" path="res://assetes/images/misc/cauldron-removebg-preview.png" id="3_4eoem"]
 [ext_resource type="PackedScene" uid="uid://bfbrwohdbtw5h" path="res://main/scenes/ingredient.tscn" id="4_fnfxh"]
 [ext_resource type="Texture2D" uid="uid://chygyc1ir8b0c" path="res://assetes/images/ingredients/leaf.png" id="5_4eoem"]
 [ext_resource type="Texture2D" uid="uid://kysgxbvrra32" path="res://assetes/images/ingredients/slime-removebg-preview-1.png.png" id="6_4eoem"]
 [ext_resource type="Texture2D" uid="uid://b6pdumj11gdwj" path="res://assetes/images/ingredients/mushroom.png" id="7_cntmf"]
 [ext_resource type="Texture2D" uid="uid://dm8dewhltw5yo" path="res://assetes/images/ingredients/ember (2).png" id="8_sq4ww"]
 [ext_resource type="Texture2D" uid="uid://cs34fslauj2rt" path="res://assetes/images/ingredients/crystal.png" id="9_4eoem"]
-[ext_resource type="Texture2D" uid="uid://dqi3rrv8oc3au" path="res://assetes/images/parchmentPaper.png" id="10_4eoem"]
+[ext_resource type="Texture2D" uid="uid://dqi3rrv8oc3au" path="res://assetes/images/misc/parchmentPaper.png" id="10_4eoem"]
 [ext_resource type="Texture2D" uid="uid://da0honoemn4gf" path="res://assetes/images/potions/speed.png" id="11_v6x6w"]
 [ext_resource type="Texture2D" uid="uid://208eyqxd4cmf" path="res://assetes/images/potions/fire.png" id="12_kmrme"]
 [ext_resource type="Texture2D" uid="uid://dijxgcsf01d8u" path="res://assetes/images/potions/healing.png" id="13_iu211"]
@@ -109,48 +109,50 @@ position = Vector2(416, 144)
 name_id = "Crystal Berry"
 texture = ExtResource("9_4eoem")
 
-[node name="FireLight" type="DirectionalLight2D" parent="."]
+[node name="Miscellaneous" type="Node2D" parent="."]
+
+[node name="FireLight" type="DirectionalLight2D" parent="Miscellaneous"]
 light_mask = 2
 position = Vector2(648, 504)
 color = Color(1, 0.682353, 0.133333, 1)
 script = SubResource("GDScript_4eoem")
 
-[node name="ParchmentPaper" type="Sprite2D" parent="."]
+[node name="ParchmentPaper" type="Sprite2D" parent="Miscellaneous"]
 modulate = Color(0.662452, 0.662452, 0.662452, 1)
 position = Vector2(976, 152)
 scale = Vector2(1.05882, 1.05082)
 texture = ExtResource("10_4eoem")
 
-[node name="Speed" type="Sprite2D" parent="."]
+[node name="Speed" type="Sprite2D" parent="Miscellaneous"]
 position = Vector2(208, 408)
 scale = Vector2(0.377551, 0.377551)
 texture = ExtResource("11_v6x6w")
 
-[node name="Fire" type="Sprite2D" parent="."]
+[node name="Fire" type="Sprite2D" parent="Miscellaneous"]
 position = Vector2(128, 416)
 scale = Vector2(0.336735, 0.336735)
 texture = ExtResource("12_kmrme")
 
-[node name="Healing" type="Sprite2D" parent="."]
+[node name="Healing" type="Sprite2D" parent="Miscellaneous"]
 position = Vector2(160, 424)
 scale = Vector2(0.377551, 0.377551)
 texture = ExtResource("13_iu211")
 
-[node name="Poison" type="Sprite2D" parent="."]
+[node name="Poison" type="Sprite2D" parent="Miscellaneous"]
 position = Vector2(104, 464)
 scale = Vector2(0.459184, 0.459184)
 texture = ExtResource("14_jw1f3")
 
-[node name="Bubbles" parent="." instance=ExtResource("15_kmrme")]
+[node name="Bubbles" parent="Miscellaneous" instance=ExtResource("15_kmrme")]
 position = Vector2(648, 304)
 
-[node name="Bubbles2" parent="." instance=ExtResource("15_kmrme")]
+[node name="Bubbles2" parent="Miscellaneous" instance=ExtResource("15_kmrme")]
 position = Vector2(704, 312)
 
-[node name="Bubbles3" parent="." instance=ExtResource("15_kmrme")]
+[node name="Bubbles3" parent="Miscellaneous" instance=ExtResource("15_kmrme")]
 position = Vector2(584, 312)
 
-[node name="splashParticles" parent="." instance=ExtResource("16_iu211")]
+[node name="splashParticles" parent="Miscellaneous" instance=ExtResource("16_iu211")]
 position = Vector2(647, 312)
 
 [connection signal="body_entered" from="DropBox" to="Ingredients/Leaf" method="_on_drop_box_body_entered"]

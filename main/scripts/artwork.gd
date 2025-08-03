@@ -12,11 +12,10 @@ func emit_Signal(ingredient):
 
 func _on_leaf_ingredient_drop(ingredient: Variant) -> void:
 	emit_Signal(ingredient)
-	$splashParticles.position = ingredient.global_position
-	$splashParticles.position.y += 10
-	$splashParticles.emitting = true
+	$Miscellaneous/splashParticles.position = ingredient.global_position
+	$Miscellaneous/splashParticles.position.y += 10
+	$Miscellaneous/splashParticles.emitting = true
 	
-
 
 #func _on_slime_ingredient_drop(ingredient: Variant) -> void:
 	#emit_Signal(ingredient)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://7o4movj7xroa"]
 
-[ext_resource type="Texture2D" uid="uid://cojg0g0rvo6js" path="res://large_bubble-removebg-preview.png" id="1_u7lhq"]
+[ext_resource type="Texture2D" uid="uid://cojg0g0rvo6js" path="res://assetes/images/misc/large_bubble-removebg-preview.png" id="1_u7lhq"]
 
 [node name="Bubbles" type="CPUParticles2D"]
 amount = 2

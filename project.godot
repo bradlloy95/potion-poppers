@@ -13,11 +13,16 @@ config_version=5
 config/name="Potion Popper"
 run/main_scene="uid://btmgs7c8knkq0"
 config/features=PackedStringArray("4.4", "Forward Plus")
+config/icon="res://assetes/icon/favicon (1).ico"
+config/windows_native_icon="res://assetes/icon/favicon (1).ico"
 
 [autoload]
 
 Global="*res://main/scripts/global.gd"
-GlobalSignals="*res://main/scripts/global_signals.gd"
+
+[display]
+
+window/stretch/mode="canvas_items"
 
 [input]
 
