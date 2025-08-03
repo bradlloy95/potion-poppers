@@ -1,8 +1,0 @@
-res://main/scenes/artwork.tscn
-res://main/scenes/game.tscn
-res://main/scenes/ingredient.tscn
-res://main/scenes/bubbles.tscn
-res://main/scenes/splash_particles.tscn
-res://main/scenes/start_menu.tscn
-res://READme.txt
-res://main/scripts/artwork.gd

@@ -1,25 +1,21 @@
-# Godot Engine
+# Godot-specific folders
 .import/
-.export/
-*.import
-*.tmp
-*.translation
+.godot/
+export.cfg
+export_presets.cfg
 
-# Builds (optional - keep exported versions only)
-export/*
-!export/*.html
-!export/*.js
-!export/*.wasm
-!export/*.pck
+# Build folder (where you put your game builds)
+builds/
 
-# Editor and OS Files
+# OS-specific files
 .DS_Store
 Thumbs.db
-*.log
-*.bak
 
-# Godot local editor settings (not needed in repo)
-*.godot/settings/editor_settings-*.txt
+# Godot Mono (C#) specific
+.mono/
 
-# VS Code or other IDEs
-.vscode/
+# Godot temporary files
+*.tmp
+
+# Crash logs (optional)
+crash_dump-*.log
