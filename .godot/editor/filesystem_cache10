@@ -62,6 +62,7 @@ game.gd::GDScript/GDScript::7676299810483880793::1754152418::0::1::::<>Node2D<><
 global.gd::GDScript/GDScript::7968713267845947492::1754140992::0::1::::<>Node<><>0<>0<><>::
 ingedient.gd::GDScript/GDScript::3096072298424550810::1754152638::0::1::::<>CharacterBody2D<><>0<>0<><>::
 start_menu.gd::GDScript/GDScript::8630560071058438211::1753819192::0::1::::<>Node2D<><>0<>0<><>::
-::res://screenshots/::1754207112
+::res://screenshots/::1754207387
+maingame.png::CompressedTexture2D::374991708555736109::1754207388::1754209012::1::::<><><>0<>0<>2367f67cacf76251923a04b40cdbec52<>res://.godot/imported/maingame.png-cb6a337248cdcb31bd18aa620f84a7ac.ctex::
 mainmenu.png::CompressedTexture2D::102750179512709068::1754207113::1754207319::1::::<><><>0<>0<>249b86108eb1348a373331aca3ce283e<>res://.godot/imported/mainmenu.png-3724d6588d3384fba7d8f02363713954.ctex::
 ::res://test/::1754141248

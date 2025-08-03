@@ -1,0 +1,25 @@
+# Godot Engine
+.import/
+.export/
+*.import
+*.tmp
+*.translation
+
+# Builds (optional - keep exported versions only)
+export/*
+!export/*.html
+!export/*.js
+!export/*.wasm
+!export/*.pck
+
+# Editor and OS Files
+.DS_Store
+Thumbs.db
+*.log
+*.bak
+
+# Godot local editor settings (not needed in repo)
+*.godot/settings/editor_settings-*.txt
+
+# VS Code or other IDEs
+.vscode/
