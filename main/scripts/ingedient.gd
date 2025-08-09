@@ -50,6 +50,7 @@ func _on_button_button_up() -> void:
 	if in_drop:
 		position = get_global_mouse_position() - of
 	else:
+		# move back to start position
 		position = Global.get_position(name_id)
 	
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://kog84r5roep0"]
+[gd_scene load_steps=21 format=3 uid="uid://kog84r5roep0"]
 
 [ext_resource type="Script" uid="uid://c6ljjojpuqn1p" path="res://main/scripts/artwork.gd" id="1_tf4bt"]
 [ext_resource type="Texture2D" uid="uid://iw21m3yhy2px" path="res://assetes/images/backgrounds/background.jpg" id="2_beiha"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://bt6t4lw0t0ytj" path="res://main/scenes/splash_particles.tscn" id="16_iu211"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3qcxw"]
-size = Vector2(177, 204)
+size = Vector2(203, 227)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m03l2"]
 size = Vector2(430, 28)
@@ -41,6 +41,9 @@ func _process(delta: float) -> void:
 		flicker_time = randf_range(0.08, 0.18)
 "
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu211"]
+size = Vector2(372, 31.5)
+
 [node name="Artwork" type="Node2D"]
 script = ExtResource("1_tf4bt")
 
@@ -52,7 +55,7 @@ texture = ExtResource("2_beiha")
 [node name="DropBox" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropBox"]
-position = Vector2(646.5, 178)
+position = Vector2(649.5, 189.5)
 shape = SubResource("RectangleShape2D_3qcxw")
 
 [node name="ColorRect" type="ColorRect" parent="DropBox"]
@@ -155,6 +158,12 @@ position = Vector2(584, 312)
 [node name="splashParticles" parent="Miscellaneous" instance=ExtResource("16_iu211")]
 position = Vector2(647, 312)
 
+[node name="Missed" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Missed"]
+position = Vector2(657, 353.25)
+shape = SubResource("RectangleShape2D_iu211")
+
 [connection signal="body_entered" from="DropBox" to="Ingredients/Leaf" method="_on_drop_box_body_entered"]
 [connection signal="body_entered" from="DropBox" to="Ingredients/Slime" method="_on_drop_box_body_entered"]
 [connection signal="body_entered" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_entered"]
@@ -172,3 +181,4 @@ position = Vector2(647, 312)
 [connection signal="body_entered" from="Cauldron" to="Ingredients/CrystalBerry" method="_on_cauldron_body_entered"]
 [connection signal="ingredient_drop" from="Ingredients/Leaf" to="." method="_on_leaf_ingredient_drop"]
 [connection signal="ingredient_drop" from="Ingredients/Slime" to="." method="_on_slime_ingredient_drop"]
+[connection signal="body_entered" from="Missed" to="." method="_on_missed_body_entered"]

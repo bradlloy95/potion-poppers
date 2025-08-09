@@ -1,5 +1,6 @@
 extends Node
 
+var lives : int = 3
 
 var ingredients = ["Mushroom", "Leaf", "Slime", "Ember Root", "Crystal Berry"]
 var postions = ["Healing Brew", "Fire Tonic", "Speed Syrup", "Poison Mist"]

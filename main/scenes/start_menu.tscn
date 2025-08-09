@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://btmgs7c8knkq0"]
+[gd_scene load_steps=7 format=3 uid="uid://btmgs7c8knkq0"]
 
 [ext_resource type="Script" uid="uid://du7ycflbop6xb" path="res://main/scripts/start_menu.gd" id="1_jwbto"]
-[ext_resource type="Texture2D" uid="uid://bjxh76gpfy440" path="res://assetes/images/backgrounds/mainmenu_background.jpg" id="2_h62y2"]
+[ext_resource type="Texture2D" uid="uid://drk4e3km1fkob" path="res://assetes/images/backgrounds/backgroundupdates.jpg" id="2_tdm0j"]
+[ext_resource type="Texture2D" uid="uid://c6s1fqunxl5ry" path="res://assetes/menu buttons/play game normal.png" id="3_tdm0j"]
+[ext_resource type="Texture2D" uid="uid://0oq62h0fv2k2" path="res://assetes/menu buttons/play game hover.png" id="4_7eacl"]
+[ext_resource type="Texture2D" uid="uid://c8e5urctisjgi" path="res://assetes/menu buttons/quit game normal.png" id="5_3uu3e"]
+[ext_resource type="Texture2D" uid="uid://djtl0w00a65ym" path="res://assetes/menu buttons/quit game hover.png" id="6_04h6w"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_jwbto")
@@ -9,23 +13,25 @@ script = ExtResource("1_jwbto")
 [node name="MainmenuBackground" type="Sprite2D" parent="."]
 position = Vector2(576, 328)
 scale = Vector2(0.75, 0.625)
-texture = ExtResource("2_h62y2")
+texture = ExtResource("2_tdm0j")
 
-[node name="StartButton" type="Button" parent="."]
+[node name="StartButton" type="TextureButton" parent="."]
 offset_left = 384.0
-offset_top = 128.0
-offset_right = 768.0
-offset_bottom = 256.0
-theme_override_font_sizes/font_size = 50
-text = "Start Game!"
+offset_top = 256.0
+offset_right = 784.0
+offset_bottom = 368.0
+texture_normal = ExtResource("3_tdm0j")
+texture_pressed = ExtResource("3_tdm0j")
+texture_hover = ExtResource("4_7eacl")
 
-[node name="QuitButton" type="Button" parent="."]
+[node name="QuitButton" type="TextureButton" parent="."]
 offset_left = 384.0
-offset_top = 384.0
+offset_top = 448.0
 offset_right = 768.0
-offset_bottom = 512.0
-theme_override_font_sizes/font_size = 50
-text = "Quit Game!"
+offset_bottom = 576.0
+texture_normal = ExtResource("5_3uu3e")
+texture_pressed = ExtResource("5_3uu3e")
+texture_hover = ExtResource("6_04h6w")
 
 [connection signal="pressed" from="StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
