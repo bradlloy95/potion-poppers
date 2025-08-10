@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://b82rce5i2kpne"]
+
+[sub_resource type="GDScript" id="GDScript_81uhm"]
+script/source = "extends Node2D
+
+
+func _on_resume_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://main/scenes/game.tscn\")
+
+
+func _on_main_memu_pressed() -> void:
+	get_tree().change_scene_to_file(\"res://main/scenes/start_menu.tscn\")
+"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_nw4cj"]
+load_path = "res://.godot/imported/mainmenu_background.jpg-fbf19832a139ae380722fa9441fadcc7.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hj80p"]
+load_path = "res://.godot/imported/resume game normal.png-8849e912a9202d12731f39a9f7bea7ee.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_6ue1r"]
+load_path = "res://.godot/imported/resume game hover.png-df80edcfdbc91aa4f85fbe2219abcef4.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_es76f"]
+load_path = "res://.godot/imported/main menu normal.png-1f2ab8e449671bfc3662a3029a1294c9.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_3dmnb"]
+load_path = "res://.godot/imported/main menu hover.png-e75559259a8d79bd1e04cc06fa8649ef.ctex"
+
+[node name="StartMenu" type="Node2D"]
+script = SubResource("GDScript_81uhm")
+
+[node name="MainmenuBackground" type="Sprite2D" parent="."]
+position = Vector2(576, 328)
+scale = Vector2(0.75, 0.625)
+texture = SubResource("CompressedTexture2D_nw4cj")
+
+[node name="Resume" type="TextureButton" parent="."]
+offset_left = 384.0
+offset_top = 256.0
+offset_right = 784.0
+offset_bottom = 368.0
+texture_normal = SubResource("CompressedTexture2D_hj80p")
+texture_pressed = SubResource("CompressedTexture2D_hj80p")
+texture_hover = SubResource("CompressedTexture2D_6ue1r")
+
+[node name="MainMemu" type="TextureButton" parent="."]
+offset_left = 384.0
+offset_top = 448.0
+offset_right = 768.0
+offset_bottom = 576.0
+texture_normal = SubResource("CompressedTexture2D_es76f")
+texture_pressed = SubResource("CompressedTexture2D_es76f")
+texture_hover = SubResource("CompressedTexture2D_3dmnb")
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MainMemu" to="." method="_on_main_memu_pressed"]

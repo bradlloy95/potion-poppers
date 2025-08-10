@@ -1,8 +1,8 @@
 [gd_scene load_steps=36 format=3 uid="uid://bhkxwi1hahpu2"]
 
-[ext_resource type="Texture2D" uid="uid://blsfm2dmtw37m" path="res://assetes/hearts/first_heaer_pop.png" id="1_rci52"]
-[ext_resource type="Texture2D" uid="uid://r5640y4u0p2n" path="res://assetes/hearts/sendond_hearr_drop.png" id="2_vk681"]
-[ext_resource type="Texture2D" uid="uid://07uxlgvs71sm" path="res://assetes/hearts/third_heart_drop.png" id="3_mwmxw"]
+[ext_resource type="Texture2D" uid="uid://blsfm2dmtw37m" path="res://assetes/images/hearts/first_heaer_pop.png" id="1_rci52"]
+[ext_resource type="Texture2D" uid="uid://r5640y4u0p2n" path="res://assetes/images/hearts/sendond_hearr_drop.png" id="2_vk681"]
+[ext_resource type="Texture2D" uid="uid://07uxlgvs71sm" path="res://assetes/images/hearts/third_heart_drop.png" id="3_mwmxw"]
 [ext_resource type="Script" uid="uid://s2i3cg5t83fe" path="res://main/scripts/hearts.gd" id="4_mwmxw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7u4v4"]

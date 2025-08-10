@@ -23,6 +23,4 @@ func register_position(name_id, position:Vector2):
 	positions[name_id] = position
 
 func get_position(name_id):
-	
-
 	return positions[name_id]

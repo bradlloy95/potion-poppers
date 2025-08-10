@@ -6,6 +6,7 @@ export_presets.cfg
 
 # Build folder (where you put your game builds)
 builds/
+screenshots/
 
 # OS-specific files
 .DS_Store

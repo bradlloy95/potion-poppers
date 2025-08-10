@@ -122,7 +122,7 @@ script = SubResource("GDScript_4eoem")
 
 [node name="ParchmentPaper" type="Sprite2D" parent="Miscellaneous"]
 modulate = Color(0.662452, 0.662452, 0.662452, 1)
-position = Vector2(976, 152)
+position = Vector2(976, 203)
 scale = Vector2(1.05882, 1.05082)
 texture = ExtResource("10_4eoem")
 
