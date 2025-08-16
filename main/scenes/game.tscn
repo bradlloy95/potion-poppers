@@ -55,6 +55,7 @@ wait_time = 10.0
 one_shot = true
 
 [node name="Gamover" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="GameOverBG" type="Sprite2D" parent="Gamover"]
 position = Vector2(576, 296)
@@ -63,9 +64,9 @@ texture = ExtResource("17_3dmnb")
 metadata/_edit_lock_ = true
 
 [node name="FinalScore" type="Label" parent="Gamover"]
-offset_left = 368.0
+offset_left = 320.0
 offset_top = 248.0
-offset_right = 802.0
+offset_right = 832.0
 offset_bottom = 336.0
 theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
 theme_override_fonts/font = ExtResource("20_6tgnm")
@@ -79,20 +80,22 @@ position = Vector2(536, 288)
 texture = ExtResource("10_6tgnm")
 
 [node name="Gamover" type="Label" parent="Gamover"]
-offset_left = 338.0
+offset_left = 320.0
 offset_top = 104.0
-offset_right = 826.0
+offset_right = 832.0
 offset_bottom = 204.0
 theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
 theme_override_fonts/font = ExtResource("20_6tgnm")
 theme_override_font_sizes/font_size = 100
 text = "Game Over!"
+horizontal_alignment = 1
 
 [node name="GameOverMenuBTN" parent="Gamover" instance=ExtResource("3_6ue1r")]
-offset_left = 384.0
+offset_left = 385.0
 offset_top = 376.0
-offset_right = 764.0
+offset_right = 765.0
 offset_bottom = 506.0
+text = "Main Menu"
 
 [node name="Sounds" type="Node2D" parent="."]
 

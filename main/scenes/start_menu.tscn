@@ -14,17 +14,34 @@ texture = ExtResource("2_tdm0j")
 
 [node name="QuitBTN" parent="." instance=ExtResource("7_7eacl")]
 offset_left = 384.0
-offset_top = 416.0
+offset_top = 400.0
 offset_right = 764.0
-offset_bottom = 546.0
+offset_bottom = 530.0
 text = "Quit Game"
 
 [node name="StartBTN" parent="." instance=ExtResource("7_7eacl")]
 offset_left = 384.0
-offset_top = 256.0
+offset_top = 248.0
 offset_right = 764.0
-offset_bottom = 386.0
+offset_bottom = 378.0
 text = "Start Game"
+
+[node name="StatsBTN" parent="." instance=ExtResource("7_7eacl")]
+offset_left = 384.0
+offset_top = 552.0
+offset_right = 764.0
+offset_bottom = 682.0
+scale = Vector2(0.45, 0.45)
+text = "Stats"
+
+[node name="SettingsBTN" parent="." instance=ExtResource("7_7eacl")]
+offset_left = 600.0
+offset_top = 552.0
+offset_right = 980.0
+offset_bottom = 682.0
+scale = Vector2(0.45, 0.45)
+text = "Settings"
 
 [connection signal="pressed" from="QuitBTN" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="StartBTN" to="." method="_on_start_btn_pressed"]
+[connection signal="pressed" from="StatsBTN" to="." method="_on_stats_btn_pressed"]

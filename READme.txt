@@ -10,3 +10,6 @@ colors
 button border #ca965c
 button back  #7c4728
 text #f0c883
+
+fonts
+canva- cinzel

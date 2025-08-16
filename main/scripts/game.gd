@@ -4,7 +4,7 @@ extends Node2D
 var is_paused = false
 var is_gameOver = false
 var recipe                       # The current recipe list
-var random_item                  # The current potion name
+var random_potion: String                # The current potion name
 var score := 0
 var added_ingredients = []       # Ingredients the player has added
 var time_dampener : float = 0.1  # reduce time by 0.1 seconds every time coreect
@@ -45,6 +45,7 @@ func _physics_process(_delta: float) -> void:
 		if recipe.size() == 0:
 			score += 1
 			play_potion_made()
+			Global.potions_brewed[random_potion] += 1
 			get_random_recipe()
 			# make timer less time
 			$CountdownTimer.wait_time -= 0.1
@@ -86,8 +87,15 @@ func gameover():
 	$GameGraphics.visible = false
 	$Artwork.visible = false
 	$Gamover.visible = true
-	$Gamover/FinalScore.text = "final score: " + str(score)
+	# check for high score
+	if score > Global.highest_score:
+		print("HIGH score")
+		Global.highest_score = score
+		$Gamover/FinalScore.text = "final score: " + str(score) + "New High Score!"
+	else:
+		$Gamover/FinalScore.text = "final score: " + str(score) 
 	$Sounds/background.stop()
+	Global.save_game()
 	
 
 
@@ -122,10 +130,10 @@ func update_recipe():
 
 # Selects a new random potion and its recipe
 func get_random_recipe():
-	random_item = Global.postions[randi() % Global.postions.size()]
-	recipe = Global.postion_recipes[random_item].duplicate(true)
+	random_potion = Global.postions[randi() % Global.postions.size()]
+	recipe = Global.postion_recipes[random_potion].duplicate(true)
 
-	$GameGraphics/HUD/Potion.text = random_item
+	$GameGraphics/HUD/Potion.text = random_potion
 	added_ingredients.clear()
 	update_recipe()
 	$CountdownTimer.start()
