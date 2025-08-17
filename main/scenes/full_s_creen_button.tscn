@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://drjum0xy8deqq"]
+
+[ext_resource type="Texture2D" uid="uid://548pw56h6b7i" path="res://assetes/menu buttons/expand.png" id="1_dl8xs"]
+[ext_resource type="Script" uid="uid://cmxnihwb5fwd3" path="res://main/scripts/full_s_creen_button.gd" id="2_mbunp"]
+[ext_resource type="Texture2D" uid="uid://dbraleum11fik" path="res://assetes/menu buttons/minimise.png" id="3_xrqrs"]
+
+[node name="FullSCreenButton" type="TextureButton"]
+offset_right = 64.0
+offset_bottom = 64.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(32, 32)
+tooltip_text = "FullScreen"
+texture_normal = ExtResource("1_dl8xs")
+script = ExtResource("2_mbunp")
+expand_BTN = ExtResource("1_dl8xs")
+minimise_BTN = ExtResource("3_xrqrs")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

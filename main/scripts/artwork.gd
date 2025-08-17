@@ -12,4 +12,4 @@ func _on_leaf_ingredient_drop(ingredient: Variant) -> void:
 	$Miscellaneous/splashParticles.emitting = true
 	
 func _on_missed_body_entered(body: Node2D) -> void:
-	body.position = Global.get_position(body.name_id)
+	body.position = StateTracker.get_position(body.name_id)

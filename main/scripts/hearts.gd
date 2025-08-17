@@ -5,10 +5,10 @@ var previous_lives: int
 var animation_index: int = 0
 
 func _ready() -> void:
-	previous_lives = Global.lives
+	previous_lives = GameData.lives
 
 func _process(_delta: float) -> void:
-	var current_lives = Global.lives
+	var current_lives = GameData.lives
 
 	# Check if the player lost a life
 	if current_lives < previous_lives:

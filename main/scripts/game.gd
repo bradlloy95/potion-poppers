@@ -1,59 +1,64 @@
 extends Node2D
 
-# Game state variables
-var is_paused = false
-var is_gameOver = false
-var recipe                       # The current recipe list
-var random_potion: String                # The current potion name
-var score := 0
-var added_ingredients = []       # Ingredients the player has added
-var time_dampener : float = 0.1  # reduce time by 0.1 seconds every time coreect
+# --- Game State Variables ---
+var is_paused = false                  # Pause state
+var is_gameOver = false                # Game over state
+var recipe                             # Current recipe list (ingredients still needed)
+var random_potion: String              # Current potion name
+var score := 0                         # Player's score
+var added_ingredients = []             # Ingredients already dropped in
+var time_dampener : float = 0.1        # Reduces countdown timer by 0.1s each successful brew
 
+
+# --- Lifecycle ---
 func _ready() -> void:
-	# Initialize game state and UI
+	# Setup UI
 	$PauseMenu.visible = is_paused
 	$Gamover.visible = is_gameOver
-	Global.lives = 3
 	
+	# Reset player lives
+	GameData.lives = 3
+	
+	# Select first recipe
 	get_random_recipe()
 	
-	# Set up HUD
+	# Initialize HUD
 	$GameGraphics/HUD/Score.text = "Score " + str(score)
 	$GameGraphics/HUD/CountDown.text = str($CountdownTimer.wait_time)
 	$CountdownTimer.start()
 
 
 func _physics_process(_delta: float) -> void:
-	# Only update if game is not over
+	# Skip game logic if over
 	if not is_gameOver:
-		# Update countdown and score display
-		$GameGraphics/HUD/CountDown.text = String.num($CountdownTimer.time_left,1)
-		$GameGraphics/HUD/Score.text =str(score)
+		# Update HUD
+		$GameGraphics/HUD/CountDown.text = String.num($CountdownTimer.time_left, 1)
+		$GameGraphics/HUD/Score.text = str(score)
+		update_recipe()
 		
-		update_recipe()  # Refresh recipe display
-
-		
-		# Handle pause input
+		# Pause toggle
 		if Input.is_action_just_pressed("pause"):
 			toggle_pause()
 		
-		# Check for game over condition
-		if Global.lives < 1:
+		# Game over check
+		if GameData.lives < 1:
 			is_gameOver = true
 		
-		# Check if recipe is completed
+		# Potion complete
 		if recipe.size() == 0:
 			score += 1
 			play_potion_made()
-			Global.potions_brewed[random_potion] += 1
+			GameData.brewed_potions[random_potion] += 1
 			get_random_recipe()
-			# make timer less time
-			$CountdownTimer.wait_time -= 0.1
+			
+			# Speed up game (reduce available time)
+			$CountdownTimer.wait_time -= time_dampener
 	else:
+		# Handle game over once triggered
 		gameover()
 
 
-# Audio helper functions
+# --- Audio Helpers ---
 func play_waterDrop():
 	$Sounds/WaterDrop.play()
 
@@ -67,52 +72,66 @@ func play_glass_break():
 	$Sounds/GlassBreak.play()
 
 
-# Toggle pause state
+# --- Pause Handling ---
 func toggle_pause():
-	# change pause state
 	is_paused = not is_paused
 	
-	## hide or show non pause menu items
+	# Show/hide UI groups
 	$GameGraphics/HUD.visible = not is_paused
 	$GameGraphics.visible = not is_paused
-	# hide or show pause menu items
-	$PauseMenu.visible = is_paused	
+	$PauseMenu.visible = is_paused
+	
+	# Stop/resume timer
 	$CountdownTimer.set_paused(is_paused)
 
 
-# Handle game over state
+
+# --- Game Over ---
+var has_gameover_run := false  # NEW FLAG
+
 func gameover():
+	if has_gameover_run:
+		return
+	has_gameover_run = true
+
+	# Freeze gameplay
 	$CountdownTimer.stop()
 	$GameGraphics/HUD.visible = false
 	$GameGraphics.visible = false
 	$Artwork.visible = false
 	$Gamover.visible = true
-	# check for high score
-	if score > Global.highest_score:
-		print("HIGH score")
-		Global.highest_score = score
-		$Gamover/FinalScore.text = "final score: " + str(score) + "New High Score!"
-	else:
-		$Gamover/FinalScore.text = "final score: " + str(score) 
 	$Sounds/background.stop()
-	Global.save_game()
 	
+	# Update score + high score
+	if score > GameData.high_score:
+		GameData.high_score = score
+		$Gamover/Message.text = "New High Score!"
+		$Gamover/FinalScore.text = "final score: " + str(score)
+		print("NEW High Score:", score)
+	else:
+		$Gamover/Message.text = "Game Over"
+		$Gamover/FinalScore.text = "final score: " + str(score)
+
+	# Save progress immediately
+	SaveManager.save_game()
 
 
-# Called when an ingredient is dropped into the cauldron
+
+# --- Recipe Handling ---
 func check_recipe(ingredient):
+	# If ingredient is correct
 	if ingredient in recipe:
 		if recipe.size() != 1:
 			play_waterDrop()
 		recipe.erase(ingredient)
 		added_ingredients.append(ingredient)
 	else:
+		# Wrong ingredient
 		play_burn()
 		get_random_recipe()
-		Global.lives -= 1
+		GameData.lives -= 1
 
 
-# Updates the recipe display on the HUD
 func update_recipe():
 	var recipe_str = ""
 
@@ -121,53 +140,67 @@ func update_recipe():
 		recipe_str += item + "\n"
 
 	# Show already added ingredients as strikethrough
-	if added_ingredients:
-		for item in added_ingredients:
-			recipe_str += "[s]" + item + "[/s]"
+	for item in added_ingredients:
+		recipe_str += "[s]" + item + "[/s]" + "\n"
 
 	$GameGraphics/HUD/Recipe.text = recipe_str
 
 
-# Selects a new random potion and its recipe
 func get_random_recipe():
-	random_potion = Global.postions[randi() % Global.postions.size()]
-	recipe = Global.postion_recipes[random_potion].duplicate(true)
-
+	# Pick a random potion
+	var last_potion
+	# dont repeat same potion 
+	if random_potion:
+		last_potion = random_potion
+	random_potion = GameData.potions[randi() % GameData.potions.size()]
+	recipe = GameData.potion_recipes[random_potion].duplicate(true)
+	if random_potion == last_potion:
+		print("repeated potion")
+		get_random_recipe()
+	# Update UI
 	$GameGraphics/HUD/Potion.text = random_potion
 	added_ingredients.clear()
 	update_recipe()
 	$CountdownTimer.start()
 
-# Pause menu resume button
 
-# Pause menu quit button
-func _on_quit_button_pressed() -> void:
-	get_tree().change_scene_to_file("res://main/scenes/start_menu.tscn")
-
-# Called when countdown timer runs out
+# --- Timer Handling ---
 func _on_timer_timeout() -> void:
-	Global.lives -= 1
+	# Lose life if timer runs out
+	GameData.lives -= 1
 	get_random_recipe()
 	play_glass_break()
 	$CountdownTimer.start()
 
 
-# Generic ingredient drop (for dynamic/custom ingredients)
+# --- Ingredient Drop ---
 func _on_artwork_ingredient_drop(ingredient: Variant) -> void:
 	check_recipe(ingredient.name_id)
-	print(ingredient.name_id + " has entered the cauldron")
 
 
+
+# --- UI Buttons ---
+# Pause Menu
 func _on_pause_button_pause_pressed() -> void:
 	toggle_pause()
 
-# Pause menu resume button
 func _on_resume_pressed() -> void:
 	toggle_pause()
 
+func _on_quit_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://main/scenes/start_menu.tscn")
+
 func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://main/scenes/start_menu.tscn")
-	
-# Game over menu main menu button
+
+# Game Over Menu
 func _on_game_over_menu_btn_pressed() -> void:
+	# Save progress
+	SaveManager.save_game()
 	get_tree().change_scene_to_file("res://main/scenes/start_menu.tscn")
+
+
+
+
+func _on_pause_button_pressed() -> void:
+	toggle_pause()

@@ -1,0 +1,10 @@
+[gd_resource type="LabelSettings" load_steps=2 format=3 uid="uid://bf045t7qwo58h"]
+
+[ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="1_gmv8o"]
+
+[resource]
+font = ExtResource("1_gmv8o")
+font_size = 30
+font_color = Color(0.941176, 0.784314, 0.513726, 1)
+outline_color = Color(0, 0, 0, 1)
+shadow_color = Color(0, 0, 0, 1)

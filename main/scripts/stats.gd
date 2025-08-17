@@ -5,18 +5,18 @@ func _ready() -> void:
 	display_stats()
 
 func display_stats():
-	Global.load_game()
-	$HighScore.text = "High Score: " + str(Global.highest_score)
+	SaveManager.load_game()
+	$HighScore.text = "High Score: " + str(GameData.high_score)
 	var brew_potions_str: String
-	for potion in Global.potions_brewed:
-		brew_potions_str = brew_potions_str + potion + ": " + str(int(Global.potions_brewed[potion]))+ "\n" 
-	$PotionsBrewed.text = str(brew_potions_str)
+	for potion in GameData.brewed_potions:
+		brew_potions_str = brew_potions_str + potion + ": " + str(int(GameData.brewed_potions[potion]))+ "\n" 
+	$ScrollContainer/PotionsBrewed.text = str(brew_potions_str)
 
 
 
 func _on_reset_btn_pressed() -> void:
-	Global.delete_save()
-	Global.load_game()
+	SaveManager.perm_delete_save()
+	SaveManager.load_game()
 	display_stats()
 
 

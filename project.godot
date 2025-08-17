@@ -18,10 +18,14 @@ config/windows_native_icon="res://assetes/icon/favicon (1).ico"
 
 [autoload]
 
-Global="*res://main/scripts/global.gd"
+GameData="*res://main/Global_scripts/gameData.gd"
+SaveManager="*res://main/Global_scripts/SaveManager.gd"
+StateTracker="*res://main/Global_scripts/StateTracker.gd"
+SettingsManager="*res://main/Global_scripts/SettingsManager.gd"
 
 [display]
 
+window/size/initial_position_type=4
 window/stretch/mode="canvas_items"
 
 [input]

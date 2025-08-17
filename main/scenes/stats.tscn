@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3s1ssnap70qj"]
+[gd_scene load_steps=6 format=3 uid="uid://d3s1ssnap70qj"]
 
 [ext_resource type="Script" uid="uid://d1tmt1t0hkrx8" path="res://main/scripts/stats.gd" id="1_1y8kj"]
 [ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="1_w007w"]
 [ext_resource type="Texture2D" uid="uid://drk4e3km1fkob" path="res://assetes/images/backgrounds/backgroundupdates.jpg" id="3_0owkd"]
 [ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/menu_btn.tscn" id="3_rgkcf"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/full_s_creen_button.tscn" id="5_7wjxd"]
 
 [node name="Stats" type="Node2D"]
 script = ExtResource("1_1y8kj")
@@ -39,11 +40,17 @@ theme_override_font_sizes/font_size = 32
 text = "High Score: 0"
 horizontal_alignment = 1
 
-[node name="PotionsBrewed" type="Label" parent="."]
+[node name="ScrollContainer" type="ScrollContainer" parent="."]
 offset_left = 448.0
-offset_top = 352.0
+offset_top = 368.0
 offset_right = 704.0
-offset_bottom = 441.0
+offset_bottom = 517.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="PotionsBrewed" type="Label" parent="ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
 theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("1_w007w")
@@ -69,6 +76,13 @@ offset_right = 976.0
 offset_bottom = 682.0
 scale = Vector2(0.45, 0.45)
 text = "Reset Stats"
+
+[node name="FullSCreenButton" parent="." instance=ExtResource("5_7wjxd")]
+anchors_preset = 0
+offset_left = -8.0
+offset_top = 592.0
+offset_right = 56.0
+offset_bottom = 656.0
 
 [connection signal="pressed" from="MainMenuBTN" to="." method="_on_main_menu_btn_pressed"]
 [connection signal="pressed" from="ResetBTN" to="." method="_on_reset_btn_pressed"]

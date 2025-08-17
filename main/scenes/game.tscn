@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://17h2ivqe862f"]
+[gd_scene load_steps=16 format=4 uid="uid://17h2ivqe862f"]
 
 [ext_resource type="Script" uid="uid://dhmpsia8qhs62" path="res://main/scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://kog84r5roep0" path="res://main/scenes/artwork.tscn" id="2_lbhrr"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bhkxwi1hahpu2" path="res://main/scenes/hearts.tscn" id="8_gq3l2"]
 [ext_resource type="PackedScene" uid="uid://b25fbfbxjvhm4" path="res://main/scenes/pause_button.tscn" id="9_uphns"]
 [ext_resource type="Texture2D" uid="uid://ffenv8wgbo3i" path="res://assetes/images/final_score-removebg-preview.png" id="10_6tgnm"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/full_s_creen_button.tscn" id="14_hgt3o"]
 [ext_resource type="Texture2D" uid="uid://bwv4wy8lr3fyh" path="res://assetes/images/backgrounds/gameover.jpg" id="17_3dmnb"]
 [ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="20_6tgnm"]
 
@@ -24,7 +25,6 @@ script = ExtResource("1_lnu2h")
 wait_time = 3.0
 
 [node name="PauseMenu" type="CanvasLayer" parent="."]
-visible = false
 
 [node name="Label" type="Label" parent="PauseMenu"]
 offset_left = 448.0
@@ -38,16 +38,16 @@ horizontal_alignment = 1
 
 [node name="Resume" parent="PauseMenu" instance=ExtResource("3_6ue1r")]
 offset_left = 384.0
-offset_top = 184.0
+offset_top = 168.0
 offset_right = 764.0
-offset_bottom = 314.0
+offset_bottom = 298.0
 text = "Resume Game"
 
 [node name="MainMenu" parent="PauseMenu" instance=ExtResource("3_6ue1r")]
 offset_left = 384.0
-offset_top = 368.0
+offset_top = 344.0
 offset_right = 764.0
-offset_bottom = 498.0
+offset_bottom = 474.0
 text = "Main Menu"
 
 [node name="CountdownTimer" type="Timer" parent="."]
@@ -65,13 +65,24 @@ metadata/_edit_lock_ = true
 
 [node name="FinalScore" type="Label" parent="Gamover"]
 offset_left = 320.0
-offset_top = 248.0
+offset_top = 280.0
 offset_right = 832.0
-offset_bottom = 336.0
+offset_bottom = 368.0
 theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
 theme_override_fonts/font = ExtResource("20_6tgnm")
-theme_override_font_sizes/font_size = 70
+theme_override_font_sizes/font_size = 67
 text = "finals score: 0"
+horizontal_alignment = 1
+
+[node name="Message" type="Label" parent="Gamover"]
+offset_left = 320.0
+offset_top = 200.0
+offset_right = 832.0
+offset_bottom = 288.0
+theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
+theme_override_fonts/font = ExtResource("20_6tgnm")
+theme_override_font_sizes/font_size = 73
+text = "new high score"
 horizontal_alignment = 1
 
 [node name="FinalScore-removebg-preview" type="Sprite2D" parent="Gamover"]
@@ -81,9 +92,9 @@ texture = ExtResource("10_6tgnm")
 
 [node name="Gamover" type="Label" parent="Gamover"]
 offset_left = 320.0
-offset_top = 104.0
+offset_top = 88.0
 offset_right = 832.0
-offset_bottom = 204.0
+offset_bottom = 188.0
 theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
 theme_override_fonts/font = ExtResource("20_6tgnm")
 theme_override_font_sizes/font_size = 100
@@ -105,7 +116,6 @@ volume_db = 15.0
 
 [node name="background" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = SubResource("AudioStreamMP3_feb5d")
-volume_db = -20.0
 autoplay = true
 parameters/looping = true
 
@@ -122,9 +132,6 @@ stream = ExtResource("6_vu1ds")
 metadata/_edit_lock_ = true
 
 [node name="GameGraphics" type="Node2D" parent="."]
-
-[node name="PauseButton" parent="GameGraphics" instance=ExtResource("9_uphns")]
-position = Vector2(1120, 616)
 
 [node name="HUD" type="CanvasLayer" parent="GameGraphics"]
 
@@ -195,9 +202,23 @@ theme_override_font_sizes/font_size = 33
 text = "0"
 horizontal_alignment = 1
 
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[node name="FullSCreenButton" parent="Buttons" instance=ExtResource("14_hgt3o")]
+offset_left = -8.0
+offset_top = 592.0
+offset_right = 23.744
+offset_bottom = 640.248
+
+[node name="PauseButton" parent="Buttons" instance=ExtResource("9_uphns")]
+offset_left = 1096.0
+offset_top = 592.0
+offset_right = 1160.0
+offset_bottom = 656.0
+
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Gamover/GameOverMenuBTN" to="." method="_on_game_over_menu_btn_pressed"]
 [connection signal="ingredient_Drop" from="Artwork" to="." method="_on_artwork_ingredient_drop"]
-[connection signal="pause_pressed" from="GameGraphics/PauseButton" to="." method="_on_pause_button_pause_pressed"]
+[connection signal="pressed" from="Buttons/PauseButton" to="." method="_on_pause_button_pressed"]
