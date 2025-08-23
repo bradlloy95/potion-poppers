@@ -128,7 +128,7 @@ stream = ExtResource("4_oanfa")
 [node name="GlassBreak" type="AudioStreamPlayer2D" parent="Sounds"]
 stream = ExtResource("6_vu1ds")
 
-[node name="Artwork" parent="." instance=ExtResource("2_lbhrr")]
+[node name="BrewingScene" parent="." instance=ExtResource("2_lbhrr")]
 metadata/_edit_lock_ = true
 
 [node name="GameGraphics" type="Node2D" parent="."]
@@ -220,5 +220,5 @@ offset_bottom = 656.0
 [connection signal="pressed" from="PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Gamover/GameOverMenuBTN" to="." method="_on_game_over_menu_btn_pressed"]
-[connection signal="ingredient_Drop" from="Artwork" to="." method="_on_artwork_ingredient_drop"]
+[connection signal="ingredient_Drop" from="BrewingScene" to="." method="_on_artwork_ingredient_drop"]
 [connection signal="pressed" from="Buttons/PauseButton" to="." method="_on_pause_button_pressed"]

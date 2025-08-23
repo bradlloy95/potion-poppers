@@ -44,7 +44,7 @@ func _process(delta: float) -> void:
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iu211"]
 size = Vector2(372, 31.5)
 
-[node name="Artwork" type="Node2D"]
+[node name="BrewingScene" type="Node2D"]
 script = ExtResource("1_tf4bt")
 
 [node name="Background" type="Sprite2D" parent="."]
