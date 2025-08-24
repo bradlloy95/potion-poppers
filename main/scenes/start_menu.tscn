@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://du7ycflbop6xb" path="res://main/scripts/start_menu.gd" id="1_jwbto"]
 [ext_resource type="Texture2D" uid="uid://drk4e3km1fkob" path="res://assetes/images/backgrounds/backgroundupdates.jpg" id="2_tdm0j"]
-[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/full_s_creen_button.tscn" id="4_ys84w"]
-[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/menu_btn.tscn" id="7_7eacl"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/buttons/full_s_creen_button.tscn" id="4_ys84w"]
+[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="7_7eacl"]
 
 [node name="StartMenu" type="Node2D"]
 script = ExtResource("1_jwbto")

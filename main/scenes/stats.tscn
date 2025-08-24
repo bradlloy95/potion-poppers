@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://d1tmt1t0hkrx8" path="res://main/scripts/stats.gd" id="1_1y8kj"]
 [ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="1_w007w"]
 [ext_resource type="Texture2D" uid="uid://drk4e3km1fkob" path="res://assetes/images/backgrounds/backgroundupdates.jpg" id="3_0owkd"]
-[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/menu_btn.tscn" id="3_rgkcf"]
-[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/full_s_creen_button.tscn" id="5_7wjxd"]
+[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="3_rgkcf"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/buttons/full_s_creen_button.tscn" id="5_7wjxd"]
 
 [node name="Stats" type="Node2D"]
 script = ExtResource("1_1y8kj")

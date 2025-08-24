@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://bov1qooc62ki0"]
+
+[ext_resource type="Texture2D" uid="uid://rb7dhfgx5ima" path="res://assetes/menu buttons/normal.png" id="1_vr7bj"]
+[ext_resource type="Texture2D" uid="uid://bjicvps5m6etq" path="res://assetes/menu buttons/clicked.png" id="2_62j2f"]
+[ext_resource type="Texture2D" uid="uid://qbtqq4y6slqk" path="res://assetes/menu buttons/hover.png" id="3_sm5pr"]
+[ext_resource type="Texture2D" uid="uid://cf5pgp4c46g3f" path="res://assetes/menu buttons/disabled.png" id="4_311eb"]
+[ext_resource type="Script" uid="uid://bb1vscntl2cy3" path="res://main/scripts/menu_btn.gd" id="4_afnpd"]
+[ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="5_ub6xd"]
+
+[node name="MenuBTN" type="TextureButton"]
+offset_right = 380.0
+offset_bottom = 130.0
+texture_normal = ExtResource("1_vr7bj")
+texture_pressed = ExtResource("2_62j2f")
+texture_hover = ExtResource("3_sm5pr")
+texture_disabled = ExtResource("4_311eb")
+script = ExtResource("4_afnpd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -190.0
+offset_top = -57.0
+offset_right = 186.0
+offset_bottom = 63.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
+theme_override_fonts/font = ExtResource("5_ub6xd")
+theme_override_font_sizes/font_size = 58
+text = "Resume Game"
+horizontal_alignment = 1
+vertical_alignment = 1

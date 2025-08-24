@@ -1,0 +1,299 @@
+[gd_scene load_steps=29 format=3 uid="uid://kog84r5roep0"]
+
+[ext_resource type="Script" uid="uid://c6ljjojpuqn1p" path="res://main/scripts/artwork.gd" id="1_tf4bt"]
+[ext_resource type="Texture2D" uid="uid://iw21m3yhy2px" path="res://assetes/images/backgrounds/background.jpg" id="2_beiha"]
+[ext_resource type="Texture2D" uid="uid://dqr6ahvm0kvmy" path="res://assetes/images/misc/cauldron-removebg-preview.png" id="3_4eoem"]
+[ext_resource type="PackedScene" uid="uid://bfbrwohdbtw5h" path="res://main/scenes/ingredient.tscn" id="4_fnfxh"]
+[ext_resource type="Texture2D" uid="uid://chygyc1ir8b0c" path="res://assetes/images/ingredients/leaf.png" id="5_4eoem"]
+[ext_resource type="Texture2D" uid="uid://kysgxbvrra32" path="res://assetes/images/ingredients/slime-removebg-preview-1.png.png" id="6_4eoem"]
+[ext_resource type="Texture2D" uid="uid://b6pdumj11gdwj" path="res://assetes/images/ingredients/mushroom.png" id="7_cntmf"]
+[ext_resource type="Texture2D" uid="uid://dm8dewhltw5yo" path="res://assetes/images/ingredients/ember (2).png" id="8_sq4ww"]
+[ext_resource type="Texture2D" uid="uid://cs34fslauj2rt" path="res://assetes/images/ingredients/crystal.png" id="9_4eoem"]
+[ext_resource type="Texture2D" uid="uid://208eyqxd4cmf" path="res://assetes/images/potions/fire.png" id="12_kmrme"]
+[ext_resource type="PackedScene" uid="uid://7o4movj7xroa" path="res://main/scenes/bubbles.tscn" id="15_kmrme"]
+[ext_resource type="AudioStream" uid="uid://dd0mqd2286l3n" path="res://assetes/sounds/completePotion.mp3" id="16_5lxgc"]
+[ext_resource type="PackedScene" uid="uid://bt6t4lw0t0ytj" path="res://main/scenes/splash_particles.tscn" id="16_iu211"]
+[ext_resource type="AudioStream" uid="uid://dw5iut70fc55h" path="res://assetes/sounds/waterDRop.mp3" id="17_7a61e"]
+[ext_resource type="AudioStream" uid="uid://cq7acvlljxxjs" path="res://assetes/sounds/burn.mp3" id="18_f1i72"]
+[ext_resource type="AudioStream" uid="uid://do24c1hn5aa1s" path="res://assetes/sounds/glass_break.mp3" id="19_7w7uf"]
+[ext_resource type="PackedScene" uid="uid://cythkqefvpgn3" path="res://main/scenes/buttons/user_btn_overlay.tscn" id="20_7a61e"]
+[ext_resource type="PackedScene" uid="uid://btwtwrpw045tc" path="res://main/scenes/sounds/background_music.tscn" id="20_500i8"]
+[ext_resource type="AudioStream" uid="uid://8t2bhv6sm04f" path="res://assetes/sounds/bubblng.mp3" id="21_e1fhy"]
+[ext_resource type="PackedScene" uid="uid://7gdeeshtmgf4" path="res://main/scenes/buttons/pause_menu.tscn" id="21_f1i72"]
+[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="22_7w7uf"]
+[ext_resource type="Texture2D" uid="uid://csotwt4ajmq4l" path="res://assetes/images/xp_bar-removebg-preview.png" id="22_500i8"]
+[ext_resource type="PackedScene" uid="uid://cafkvpf78qbup" path="res://main/scenes/loading_icon.tscn" id="22_e1fhy"]
+[ext_resource type="LabelSettings" uid="uid://bf045t7qwo58h" path="res://main/labelSettings/settings.tres" id="24_4uu7l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3qcxw"]
+size = Vector2(203, 227)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m03l2"]
+size = Vector2(430, 28)
+
+[sub_resource type="GDScript" id="GDScript_4eoem"]
+script/source = "extends DirectionalLight2D
+
+var flicker_time := 0.0
+var flicker_interval := 0.1
+
+
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	flicker_time -= delta
+	if flicker_time <=0:
+		energy = 0.9 + randf() * 0.2
+		color = Color(1.0, 0.75 + randf() * 0.1, 0.4)
+		flicker_time = randf_range(0.08, 0.18)
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iu211"]
+size = Vector2(372, 31.5)
+
+[node name="BrewingScene" type="Node2D"]
+script = ExtResource("1_tf4bt")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(592, 336)
+scale = Vector2(1.23438, 0.757813)
+texture = ExtResource("2_beiha")
+
+[node name="DropBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropBox"]
+position = Vector2(649.5, 189.5)
+shape = SubResource("RectangleShape2D_3qcxw")
+
+[node name="ColorRect" type="ColorRect" parent="DropBox"]
+visible = false
+offset_left = 540.0
+offset_top = 78.0
+offset_right = 749.0
+offset_bottom = 205.0
+color = Color(1, 1, 1, 0.305882)
+
+[node name="Shelve" type="StaticBody2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Shelve"]
+position = Vector2(241, 190)
+shape = SubResource("RectangleShape2D_m03l2")
+
+[node name="Cauldron" type="Area2D" parent="."]
+position = Vector2(1, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Cauldron"]
+position = Vector2(647, 400.18)
+scale = Vector2(0.643675, 0.5994)
+texture = ExtResource("3_4eoem")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Cauldron"]
+position = Vector2(-1, 0)
+polygon = PackedVector2Array(559, 312, 569, 311, 578, 309, 592, 308, 605, 308, 622, 306, 676, 307, 702, 309, 732, 311, 741, 315, 731, 320, 717, 323, 702, 326, 679, 327, 634, 326, 600, 325, 577, 321, 555, 314)
+
+[node name="Ingredients" type="Area2D" parent="."]
+
+[node name="Leaf" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(64, 144)
+name_id = "Leaf"
+texture = ExtResource("5_4eoem")
+
+[node name="Slime" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(152, 144)
+name_id = "Slime"
+texture = ExtResource("6_4eoem")
+
+[node name="Mushroom" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(240, 144)
+name_id = "Mushroom"
+texture = ExtResource("7_cntmf")
+
+[node name="EmberRoot" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(328, 144)
+name_id = "Ember Root"
+texture = ExtResource("8_sq4ww")
+
+[node name="CrystalBerry" parent="Ingredients" instance=ExtResource("4_fnfxh")]
+position = Vector2(416, 144)
+name_id = "Crystal Berry"
+texture = ExtResource("9_4eoem")
+
+[node name="Miscellaneous" type="Node2D" parent="."]
+
+[node name="FireLight" type="DirectionalLight2D" parent="Miscellaneous"]
+light_mask = 2
+position = Vector2(648, 504)
+color = Color(1, 0.682353, 0.133333, 1)
+script = SubResource("GDScript_4eoem")
+
+[node name="Bubbles" parent="Miscellaneous" instance=ExtResource("15_kmrme")]
+position = Vector2(648, 304)
+emitting = false
+amount = 100
+one_shot = true
+emission_shape = 3
+emission_rect_extents = Vector2(90, 1)
+
+[node name="Bubbles2" parent="Miscellaneous" instance=ExtResource("15_kmrme")]
+position = Vector2(704, 312)
+
+[node name="Bubbles3" parent="Miscellaneous" instance=ExtResource("15_kmrme")]
+position = Vector2(584, 312)
+
+[node name="splashParticles" parent="Miscellaneous" instance=ExtResource("16_iu211")]
+position = Vector2(647, 312)
+
+[node name="Missed" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Missed"]
+position = Vector2(657, 353.25)
+shape = SubResource("RectangleShape2D_iu211")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="BottleUp" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("16_5lxgc")
+volume_db = 15.0
+bus = &"Sound Effects"
+
+[node name="WaterDrop" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("17_7a61e")
+volume_db = 24.0
+bus = &"Sound Effects"
+
+[node name="Burn" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("18_f1i72")
+bus = &"Sound Effects"
+
+[node name="GlassBreak" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("19_7w7uf")
+bus = &"Sound Effects"
+
+[node name="BackgroundMusic" parent="Sounds" instance=ExtResource("20_500i8")]
+stream_paused = false
+
+[node name="Bubbling" type="AudioStreamPlayer2D" parent="Sounds"]
+stream = ExtResource("21_e1fhy")
+
+[node name="UserBTNOverlay" parent="." instance=ExtResource("20_7a61e")]
+
+[node name="IngredientsAdded" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="IngredientsAdded"]
+offset_left = 896.0
+offset_top = 128.0
+offset_right = 1086.0
+offset_bottom = 192.0
+
+[node name="Ingredient1" type="Sprite2D" parent="IngredientsAdded"]
+position = Vector2(928.163, 160)
+scale = Vector2(0.251276, 0.266667)
+
+[node name="Ingredient2" type="Sprite2D" parent="IngredientsAdded"]
+position = Vector2(992.163, 160)
+scale = Vector2(0.251276, 0.266667)
+
+[node name="Ingredient3" type="Sprite2D" parent="IngredientsAdded"]
+position = Vector2(1056, 160)
+scale = Vector2(0.251276, 0.266667)
+
+[node name="Clear" type="Button" parent="IngredientsAdded"]
+offset_left = 1096.0
+offset_top = 136.0
+offset_right = 1144.0
+offset_bottom = 184.0
+text = "X"
+
+[node name="PauseMenu" parent="." instance=ExtResource("21_f1i72")]
+visible = false
+
+[node name="ReadyToBrew" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="ReadyToBrew"]
+offset_left = 896.0
+offset_top = 192.0
+offset_right = 1086.0
+offset_bottom = 384.0
+
+[node name="PotionSprite" type="Sprite2D" parent="ReadyToBrew"]
+position = Vector2(992, 264)
+scale = Vector2(0.451531, 0.437437)
+texture = ExtResource("12_kmrme")
+
+[node name="PotionName" type="Label" parent="ReadyToBrew"]
+offset_left = 896.0
+offset_top = 338.0
+offset_right = 1088.0
+offset_bottom = 403.0
+text = "
+fire"
+label_settings = ExtResource("24_4uu7l")
+horizontal_alignment = 1
+
+[node name="LoadingIcon" parent="ReadyToBrew" instance=ExtResource("22_e1fhy")]
+position = Vector2(992, 280)
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[node name="BrewBTN" parent="Buttons" instance=ExtResource("22_7w7uf")]
+offset_left = 896.0
+offset_top = 64.0
+offset_right = 1276.0
+offset_bottom = 194.0
+scale = Vector2(0.5, 0.5)
+text = "Brew Potion"
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Panel" type="Panel" parent="HUD"]
+offset_right = 1152.0
+offset_bottom = 56.0
+metadata/_edit_lock_ = true
+
+[node name="XPBar" type="Sprite2D" parent="HUD"]
+position = Vector2(536, 27)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("22_500i8")
+
+[node name="Level" type="Label" parent="HUD"]
+offset_left = 464.0
+offset_top = 13.0
+offset_right = 504.0
+offset_bottom = 78.0
+text = "1
+"
+label_settings = ExtResource("24_4uu7l")
+horizontal_alignment = 1
+
+[node name="xp" type="Label" parent="HUD"]
+offset_left = 504.0
+offset_top = 16.0
+offset_right = 600.0
+offset_bottom = 39.0
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="DropBox" to="Ingredients/Leaf" method="_on_drop_box_body_entered"]
+[connection signal="body_entered" from="DropBox" to="Ingredients/Slime" method="_on_drop_box_body_entered"]
+[connection signal="body_entered" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_entered"]
+[connection signal="body_entered" from="DropBox" to="Ingredients/EmberRoot" method="_on_drop_box_body_entered"]
+[connection signal="body_entered" from="DropBox" to="Ingredients/CrystalBerry" method="_on_drop_box_body_entered"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/Leaf" method="_on_drop_box_body_exited"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/Slime" method="_on_drop_box_body_exited"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/Mushroom" method="_on_drop_box_body_exited"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/EmberRoot" method="_on_drop_box_body_exited"]
+[connection signal="body_exited" from="DropBox" to="Ingredients/CrystalBerry" method="_on_drop_box_body_exited"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/Leaf" method="_on_cauldron_body_entered"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/Slime" method="_on_cauldron_body_entered"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/Mushroom" method="_on_cauldron_body_entered"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/EmberRoot" method="_on_cauldron_body_entered"]
+[connection signal="body_entered" from="Cauldron" to="Ingredients/CrystalBerry" method="_on_cauldron_body_entered"]
+[connection signal="ingredient_drop" from="Ingredients/Leaf" to="." method="_on_leaf_ingredient_drop"]
+[connection signal="ingredient_drop" from="Ingredients/Slime" to="." method="_on_slime_ingredient_drop"]
+[connection signal="body_entered" from="Missed" to="." method="_on_missed_body_entered"]
+[connection signal="pause" from="UserBTNOverlay" to="." method="_on_user_btn_overlay_pause"]
+[connection signal="pressed" from="IngredientsAdded/Clear" to="." method="_on_clear_pressed"]
+[connection signal="Resume" from="PauseMenu" to="." method="_on_pause_menu_resume"]
+[connection signal="main_menu" from="PauseMenu" to="." method="_on_pause_menu_main_menu"]
+[connection signal="pressed" from="Buttons/BrewBTN" to="." method="_on_brew_btn_pressed"]

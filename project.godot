@@ -22,6 +22,7 @@ GameData="*res://main/Global_scripts/gameData.gd"
 SaveManager="*res://main/Global_scripts/SaveManager.gd"
 StateTracker="*res://main/Global_scripts/StateTracker.gd"
 SettingsManager="*res://main/Global_scripts/SettingsManager.gd"
+PlayerStats="*res://main/Global_scripts/PlayerStats.gd"
 
 [display]
 

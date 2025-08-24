@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://cythkqefvpgn3"]
+
+[ext_resource type="Script" uid="uid://c230petx5vr5s" path="res://main/scenes/buttons/user_btn_overlay.gd" id="1_7rj67"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/buttons/full_s_creen_button.tscn" id="1_on5nc"]
+[ext_resource type="PackedScene" uid="uid://b25fbfbxjvhm4" path="res://main/scenes/buttons/pause_button.tscn" id="2_7rj67"]
+
+[node name="UserBTNOverlay" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7rj67")
+
+[node name="Buttons" type="CanvasLayer" parent="."]
+
+[node name="FullSCreenButton" parent="." instance=ExtResource("1_on5nc")]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 592.0
+offset_right = 56.0
+offset_bottom = 656.0
+
+[node name="PauseButton" parent="." instance=ExtResource("2_7rj67")]
+layout_mode = 0
+offset_left = 1096.0
+offset_top = 592.0
+offset_right = 1160.0
+offset_bottom = 656.0
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_pause_button_pressed"]

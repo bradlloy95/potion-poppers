@@ -3,9 +3,9 @@
 [ext_resource type="Script" uid="uid://caq4xp8rk0adr" path="res://main/scripts/settins.gd" id="1_3sksu"]
 [ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="2_8l0ua"]
 [ext_resource type="LabelSettings" uid="uid://bf045t7qwo58h" path="res://main/labelSettings/settings.tres" id="3_rdl7s"]
-[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/menu_btn.tscn" id="4_c6pd8"]
-[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/full_s_creen_button.tscn" id="5_nrjs2"]
-[ext_resource type="AudioStream" uid="uid://8t2bhv6sm04f" path="res://assetes/sounds/bubblng.mp3" id="6_ckox4"]
+[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="4_c6pd8"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/buttons/full_s_creen_button.tscn" id="5_nrjs2"]
+[ext_resource type="PackedScene" uid="uid://btwtwrpw045tc" path="res://main/scenes/sounds/background_music.tscn" id="6_ckox4"]
 
 [node name="Settins" type="Control"]
 layout_mode = 3
@@ -33,7 +33,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.941176, 0.784314, 0.513726, 1)
 theme_override_fonts/font = ExtResource("2_8l0ua")
 theme_override_font_sizes/font_size = 28
-text = "Volume
+text = "Music
 "
 label_settings = ExtResource("3_rdl7s")
 horizontal_alignment = 1
@@ -51,6 +51,7 @@ text = "Mute
 "
 label_settings = ExtResource("3_rdl7s")
 horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Mute" type="CheckBox" parent="PanelContainer/VBoxContainer"]
 modulate = Color(0.760784, 0.372549, 0.00784314, 1)
@@ -98,10 +99,7 @@ offset_top = 592.0
 offset_right = 56.0
 offset_bottom = 656.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_ckox4")
-autoplay = true
-parameters/looping = true
+[node name="BackgroundMusic" parent="." instance=ExtResource("6_ckox4")]
 
 [connection signal="value_changed" from="PanelContainer/VBoxContainer/Volume" to="." method="_on_volume_value_changed"]
 [connection signal="toggled" from="PanelContainer/VBoxContainer/Mute" to="." method="_on_mute_toggled"]

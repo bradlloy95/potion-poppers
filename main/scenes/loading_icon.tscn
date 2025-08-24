@@ -1,0 +1,76 @@
+[gd_scene load_steps=11 format=3 uid="uid://cafkvpf78qbup"]
+
+[ext_resource type="Texture2D" uid="uid://brrdpm7x2s15v" path="res://assetes/images/misc/New Piskel.png" id="1_crd76"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dl5gk"]
+atlas = ExtResource("1_crd76")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t6p8a"]
+atlas = ExtResource("1_crd76")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c83k1"]
+atlas = ExtResource("1_crd76")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xwxlf"]
+atlas = ExtResource("1_crd76")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2w486"]
+atlas = ExtResource("1_crd76")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x82ab"]
+atlas = ExtResource("1_crd76")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sjdov"]
+atlas = ExtResource("1_crd76")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1kg3w"]
+atlas = ExtResource("1_crd76")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnote"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dl5gk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t6p8a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c83k1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xwxlf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2w486")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x82ab")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sjdov")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1kg3w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="LoadingIcon" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(1.13249e-06, 1.90735e-06)
+scale = Vector2(1.75, 1.75)
+sprite_frames = SubResource("SpriteFrames_qnote")
+autoplay = "default"
+frame_progress = 0.858715

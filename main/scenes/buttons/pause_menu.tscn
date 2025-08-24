@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://7gdeeshtmgf4"]
+
+[ext_resource type="Script" uid="uid://p4cossetb8ut" path="res://main/scenes/buttons/pause_menu.gd" id="1_8ycm8"]
+[ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="1_r4rxx"]
+[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="2_blcs8"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+script = ExtResource("1_8ycm8")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 448.0
+offset_top = 48.0
+offset_right = 704.0
+offset_bottom = 96.0
+theme_override_fonts/font = ExtResource("1_r4rxx")
+theme_override_font_sizes/font_size = 30
+text = "Pause Menu"
+horizontal_alignment = 1
+
+[node name="Resume" parent="." instance=ExtResource("2_blcs8")]
+offset_left = 384.0
+offset_top = 168.0
+offset_right = 764.0
+offset_bottom = 298.0
+text = "Resume Game"
+
+[node name="MainMenu" parent="." instance=ExtResource("2_blcs8")]
+offset_left = 384.0
+offset_top = 344.0
+offset_right = 764.0
+offset_bottom = 474.0
+text = "Main Menu"
+
+[node name="SaveGame" parent="." instance=ExtResource("2_blcs8")]
+offset_left = 384.0
+offset_top = 504.0
+offset_right = 764.0
+offset_bottom = 634.0
+scale = Vector2(0.45, 0.45)
+text = "Save Game"
+
+[connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="SaveGame" to="." method="_on_menu_btn_pressed"]

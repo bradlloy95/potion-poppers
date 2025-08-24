@@ -1,9 +1,8 @@
 extends Node
 
-# Game variables
-var lives : int = 3
-var high_score : int = 0
-var brewed_potions = {}
+
+
+
 
 # Ingredient list
 var ingredients = ["Mushroom", "Leaf", "Slime", "Ember Root", "Crystal Berry"]
@@ -14,28 +13,32 @@ var potions = [
 	"Fire Tonic",
 	"Speed Syrup",
 	"Poison Mist",
-	"Mystic Elixir",
-	"Inferno Potion"
+	#"Mystic Elixir",
+	#"Inferno Potion"
 ]
 
+#potions images 
+var potion_images = {
+	"Healing Brew": "res://assetes/images/potions/healing.png",
+	"Fire Tonic": "res://assetes/images/potions/fire.png",
+	"Speed Syrup": "res://assetes/images/potions/speed.png",
+	"Poison Mist": "res://assetes/images/potions/poison.png",
+}
+
+# ingredients images
+var ingredients_images := {
+	"Mushroom": "res://assetes/images/ingredients/mushroom.png",
+	"Leaf": "res://assetes/images/ingredients/leaf.png",
+	"Slime": "res://assetes/images/ingredients/slime-removebg-preview-1.png.png",
+	"Ember Root": "res://assetes/images/ingredients/ember (2).png",
+	"Crystal Berry": "res://assetes/images/ingredients/crystal.png"	
+}
 # Potion recipes
 var potion_recipes = {
-	"Healing Brew": ["Mushroom", "Leaf"],
-	"Fire Tonic": ["Slime", "Ember Root"],
+	"Healing Brew": ["Leaf", "Mushroom"],
+	"Fire Tonic": ["Ember Root","Slime"],
 	"Speed Syrup": ["Crystal Berry", "Leaf"],
 	"Poison Mist": ["Mushroom", "Slime"],
-	"Mystic Elixir": ["Mushroom", "Leaf", "Crystal Berry"],
-	"Inferno Potion": ["Slime", "Ember Root", "Crystal Berry"]
+	#"Mystic Elixir": ["Crystal Berry", "Leaf", "Mushroom"],
+	#"Inferno Potion": ["Crystal Berry", "Ember Root", "Slime"]
 }
-func _ready() -> void:
-	print(brewed_potions)
-	
-
-func new_game_set_up():
-	brewed_potions.clear()
-	for potion in potions:
-		brewed_potions[potion] = 0
-	high_score = 0
-	SaveManager.save_game()
-	print(brewed_potions)
-	print("New game set up")

@@ -1,17 +1,15 @@
-[gd_scene load_steps=16 format=4 uid="uid://17h2ivqe862f"]
+[gd_scene load_steps=14 format=4 uid="uid://17h2ivqe862f"]
 
 [ext_resource type="Script" uid="uid://dhmpsia8qhs62" path="res://main/scripts/game.gd" id="1_lnu2h"]
-[ext_resource type="PackedScene" uid="uid://kog84r5roep0" path="res://main/scenes/artwork.tscn" id="2_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/menu_btn.tscn" id="3_6ue1r"]
+[ext_resource type="PackedScene" uid="uid://kog84r5roep0" path="res://main/scenes/BrewingScene.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="3_6ue1r"]
 [ext_resource type="AudioStream" uid="uid://dd0mqd2286l3n" path="res://assetes/sounds/completePotion.mp3" id="3_fj7bg"]
 [ext_resource type="AudioStream" uid="uid://dw5iut70fc55h" path="res://assetes/sounds/waterDRop.mp3" id="3_iywne"]
 [ext_resource type="AudioStream" uid="uid://cq7acvlljxxjs" path="res://assetes/sounds/burn.mp3" id="4_oanfa"]
 [ext_resource type="AudioStream" uid="uid://do24c1hn5aa1s" path="res://assetes/sounds/glass_break.mp3" id="6_vu1ds"]
-[ext_resource type="Texture2D" uid="uid://txdgp2hhct14" path="res://assetes/images/potions/potions-noBG.png" id="8_es76f"]
-[ext_resource type="PackedScene" uid="uid://bhkxwi1hahpu2" path="res://main/scenes/hearts.tscn" id="8_gq3l2"]
-[ext_resource type="PackedScene" uid="uid://b25fbfbxjvhm4" path="res://main/scenes/pause_button.tscn" id="9_uphns"]
-[ext_resource type="Texture2D" uid="uid://ffenv8wgbo3i" path="res://assetes/images/final_score-removebg-preview.png" id="10_6tgnm"]
-[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/full_s_creen_button.tscn" id="14_hgt3o"]
+[ext_resource type="PackedScene" uid="uid://b25fbfbxjvhm4" path="res://main/scenes/buttons/pause_button.tscn" id="9_uphns"]
+[ext_resource type="Texture2D" uid="uid://ffenv8wgbo3i" path="res://assetes/images/misc/final_score-removebg-preview.png" id="10_6tgnm"]
+[ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/buttons/full_s_creen_button.tscn" id="14_hgt3o"]
 [ext_resource type="Texture2D" uid="uid://bwv4wy8lr3fyh" path="res://assetes/images/backgrounds/gameover.jpg" id="17_3dmnb"]
 [ext_resource type="FontFile" uid="uid://c4xaastppdtit" path="res://assetes/fonts/RiseOfKingdom-rw3p.ttf" id="20_6tgnm"]
 
@@ -49,10 +47,6 @@ offset_top = 344.0
 offset_right = 764.0
 offset_bottom = 474.0
 text = "Main Menu"
-
-[node name="CountdownTimer" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
 
 [node name="Gamover" type="CanvasLayer" parent="."]
 visible = false
@@ -133,75 +127,6 @@ metadata/_edit_lock_ = true
 
 [node name="GameGraphics" type="Node2D" parent="."]
 
-[node name="HUD" type="CanvasLayer" parent="GameGraphics"]
-
-[node name="Panel" type="Panel" parent="GameGraphics/HUD"]
-offset_right = 1152.0
-offset_bottom = 64.0
-
-[node name="Potions-noBg" type="Sprite2D" parent="GameGraphics/HUD"]
-position = Vector2(576, 16)
-scale = Vector2(0.0709459, 0.0709459)
-texture = ExtResource("8_es76f")
-
-[node name="Hearts" parent="GameGraphics/HUD" instance=ExtResource("8_gq3l2")]
-position = Vector2(95.6111, 32)
-scale = Vector2(0.222222, 0.222222)
-
-[node name="Potion" type="Label" parent="GameGraphics/HUD"]
-offset_left = 848.0
-offset_top = 80.0
-offset_right = 1104.0
-offset_bottom = 137.0
-theme_override_colors/font_color = Color(0.00566115, 0.00566115, 0.00566115, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("20_6tgnm")
-theme_override_font_sizes/font_size = 38
-text = "postion"
-horizontal_alignment = 1
-
-[node name="Recipe" type="RichTextLabel" parent="GameGraphics/HUD"]
-offset_left = 848.0
-offset_top = 168.0
-offset_right = 1104.0
-offset_bottom = 304.0
-theme_override_colors/default_color = Color(0, 0, 0, 1)
-theme_override_fonts/normal_font = ExtResource("20_6tgnm")
-theme_override_font_sizes/bold_italics_font_size = 20
-theme_override_font_sizes/italics_font_size = 20
-theme_override_font_sizes/mono_font_size = 20
-theme_override_font_sizes/normal_font_size = 32
-theme_override_font_sizes/bold_font_size = 5
-bbcode_enabled = true
-text = "recipe"
-horizontal_alignment = 1
-
-[node name="lives" type="Label" parent="GameGraphics/HUD"]
-visible = false
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Lives: 3"
-
-[node name="CountDown" type="Label" parent="GameGraphics/HUD"]
-offset_left = 1080.0
-offset_top = 16.0
-offset_right = 1124.0
-offset_bottom = 63.0
-theme_override_fonts/font = ExtResource("20_6tgnm")
-theme_override_font_sizes/font_size = 41
-text = "60"
-horizontal_alignment = 1
-
-[node name="Score" type="Label" parent="GameGraphics/HUD"]
-offset_left = 512.0
-offset_top = 31.0
-offset_right = 640.0
-offset_bottom = 77.0
-theme_override_fonts/font = ExtResource("20_6tgnm")
-theme_override_font_sizes/font_size = 33
-text = "0"
-horizontal_alignment = 1
-
 [node name="Buttons" type="CanvasLayer" parent="."]
 
 [node name="FullSCreenButton" parent="Buttons" instance=ExtResource("14_hgt3o")]
@@ -209,6 +134,7 @@ offset_left = -8.0
 offset_top = 592.0
 offset_right = 23.744
 offset_bottom = 640.248
+metadata/_edit_use_anchors_ = true
 
 [node name="PauseButton" parent="Buttons" instance=ExtResource("9_uphns")]
 offset_left = 1096.0
@@ -218,7 +144,5 @@ offset_bottom = 656.0
 
 [connection signal="pressed" from="PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="PauseMenu/MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="timeout" from="CountdownTimer" to="." method="_on_timer_timeout"]
 [connection signal="pressed" from="Gamover/GameOverMenuBTN" to="." method="_on_game_over_menu_btn_pressed"]
-[connection signal="ingredient_Drop" from="BrewingScene" to="." method="_on_artwork_ingredient_drop"]
 [connection signal="pressed" from="Buttons/PauseButton" to="." method="_on_pause_button_pressed"]
