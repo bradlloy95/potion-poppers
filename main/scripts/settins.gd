@@ -1,18 +1,28 @@
 extends Control
 
+signal back
+
 func _ready() -> void:
 	SettingsManager.load_settings()
-	$PanelContainer/VBoxContainer/Volume.value = SettingsManager.volume
-	$PanelContainer/VBoxContainer/Mute.button_pressed = SettingsManager.muted
+	$Volume.value = SettingsManager.volume
+	$Mute.button_pressed = SettingsManager.muted
 	var idx = SettingsManager.resolution_sizes.find(SettingsManager.resolution)
 	if idx == -1:
 		idx = 3  # fallback to default (1152x648)
-	$PanelContainer/VBoxContainer/OptionButton.selected = idx
+	$OptionButton.selected = idx
 	
+func _process(delta: float) -> void:
+	if StateTracker.in_game:
+		$MainMenu.visible = false
+		$Back.visible = true
+	else:
+		$MainMenu.visible = true
+		$Back.visible = false
+
 func _on_volume_value_changed(value: float) -> void:
 	SettingsManager.volume = value
 	AudioServer.set_bus_volume_db(0, value/2)
-	$PanelContainer/VBoxContainer/Volume.tooltip_text = str(int(value))
+	$Volume.tooltip_text = str(int(value))
 
 
 func _on_mute_toggled(toggled_on: bool) -> void:
@@ -30,9 +40,9 @@ func _on_reset_pressed() -> void:
 	SettingsManager.perm_delete_settings()
 	
 	
-	$PanelContainer/VBoxContainer/Volume.value = SettingsManager.volume
-	$PanelContainer/VBoxContainer/Mute.button_pressed = SettingsManager.muted
-	$PanelContainer/VBoxContainer/OptionButton.select(3)
+	$CanvasLayer/Volume.value = SettingsManager.volume
+	$CanvasLayer/Mute.button_pressed = SettingsManager.muted
+	$CanvasLayer/OptionButton.select(3)
 
 
 func _on_option_button_item_selected(index: int) -> void:
@@ -40,3 +50,9 @@ func _on_option_button_item_selected(index: int) -> void:
 	SettingsManager.resolution = SettingsManager.resolution_sizes[index]
 	SettingsManager.save_settings()
 	
+
+
+func _on_back_pressed() -> void:
+	print("back")
+	SettingsManager.save_settings()
+	back.emit()

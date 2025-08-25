@@ -1,0 +1,240 @@
+[gd_scene load_steps=4 format=3 uid="uid://dv68dsry2eapl"]
+
+[ext_resource type="LabelSettings" uid="uid://bf045t7qwo58h" path="res://main/labelSettings/settings.tres" id="1_15ek4"]
+[ext_resource type="Script" uid="uid://dc8gguk6reram" path="res://main/scripts/saved_games.gd" id="1_ckj7w"]
+[ext_resource type="PackedScene" uid="uid://cythkqefvpgn3" path="res://main/scenes/buttons/user_btn_overlay.tscn" id="3_l5wsb"]
+
+[node name="SavedGames" type="Node2D"]
+script = ExtResource("1_ckj7w")
+
+[node name="SaveSlot1" type="CanvasLayer" parent="."]
+
+[node name="SaveSlotPanel1" type="Panel" parent="SaveSlot1"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -260.0
+offset_right = 256.0
+offset_bottom = -132.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SaveSlotTitle1" type="Label" parent="SaveSlot1"]
+offset_left = 320.0
+offset_top = 71.0
+offset_right = 832.0
+offset_bottom = 119.0
+text = "Save Slot 1"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="Description1" type="Label" parent="SaveSlot1"]
+offset_left = 320.0
+offset_top = 111.0
+offset_right = 832.0
+offset_bottom = 176.0
+text = "description
+"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="PlayBTN1" type="Button" parent="SaveSlot1"]
+offset_left = 360.0
+offset_top = 152.0
+offset_right = 552.0
+offset_bottom = 183.0
+text = "Start new game"
+
+[node name="DeleteBTN1" type="Button" parent="SaveSlot1"]
+offset_left = 600.0
+offset_top = 152.0
+offset_right = 792.0
+offset_bottom = 183.0
+disabled = true
+text = "Detete Save"
+
+[node name="SaveSlot2" type="CanvasLayer" parent="."]
+
+[node name="SaveSlotPanel2" type="Panel" parent="SaveSlot2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -69.0
+offset_right = 256.0
+offset_bottom = 59.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SaveSlotTitle2" type="Label" parent="SaveSlot2"]
+offset_left = 320.0
+offset_top = 264.0
+offset_right = 832.0
+offset_bottom = 312.0
+text = "Save Slot 2"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="Description2" type="Label" parent="SaveSlot2"]
+offset_left = 320.0
+offset_top = 304.0
+offset_right = 832.0
+offset_bottom = 335.0
+text = "no saves found"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="PlayBTN2" type="Button" parent="SaveSlot2"]
+offset_left = 360.0
+offset_top = 345.0
+offset_right = 552.0
+offset_bottom = 376.0
+text = "Start new game"
+
+[node name="DeleteBTN2" type="Button" parent="SaveSlot2"]
+offset_left = 600.0
+offset_top = 345.0
+offset_right = 792.0
+offset_bottom = 376.0
+disabled = true
+text = "Detete Save"
+
+[node name="SaveSlot3" type="CanvasLayer" parent="."]
+
+[node name="SaveSlotPanel3" type="Panel" parent="SaveSlot3"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = 123.0
+offset_right = 256.0
+offset_bottom = 251.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="SaveSlotTitle3" type="Label" parent="SaveSlot3"]
+offset_left = 320.0
+offset_top = 456.0
+offset_right = 832.0
+offset_bottom = 504.0
+text = "Save Slot 3"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="Description3" type="Label" parent="SaveSlot3"]
+offset_left = 320.0
+offset_top = 496.0
+offset_right = 832.0
+offset_bottom = 527.0
+text = "no saves found"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="PlayBTN3" type="Button" parent="SaveSlot3"]
+offset_left = 360.0
+offset_top = 537.0
+offset_right = 552.0
+offset_bottom = 568.0
+text = "Start new game"
+
+[node name="DeleteBTN3" type="Button" parent="SaveSlot3"]
+offset_left = 600.0
+offset_top = 537.0
+offset_right = 792.0
+offset_bottom = 568.0
+disabled = true
+text = "Detete Save"
+
+[node name="StartGamePopUp" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="StartGamePopUp"]
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="StartGamePopUp"]
+offset_left = 440.0
+offset_top = 200.0
+offset_right = 704.0
+offset_bottom = 264.0
+text = "Go to game?"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="StartYesButton" type="Button" parent="StartGamePopUp"]
+offset_left = 384.0
+offset_top = 272.0
+offset_right = 544.0
+offset_bottom = 303.0
+text = "Yes
+"
+
+[node name="StartNoButton2" type="Button" parent="StartGamePopUp"]
+offset_left = 608.0
+offset_top = 272.0
+offset_right = 768.0
+offset_bottom = 303.0
+text = "No
+"
+
+[node name="DeletePopUp2" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Panel" type="Panel" parent="DeletePopUp2"]
+offset_left = 320.0
+offset_top = 192.0
+offset_right = 832.0
+offset_bottom = 320.0
+
+[node name="Label" type="Label" parent="DeletePopUp2"]
+offset_left = 320.0
+offset_top = 200.0
+offset_right = 832.0
+offset_bottom = 264.0
+text = "Do you want to delete this save?"
+label_settings = ExtResource("1_15ek4")
+horizontal_alignment = 1
+
+[node name="DeleteYesButton" type="Button" parent="DeletePopUp2"]
+offset_left = 384.0
+offset_top = 272.0
+offset_right = 544.0
+offset_bottom = 303.0
+text = "Yes
+"
+
+[node name="DeleteNoButton2" type="Button" parent="DeletePopUp2"]
+offset_left = 608.0
+offset_top = 272.0
+offset_right = 768.0
+offset_bottom = 303.0
+text = "No
+"
+
+[node name="UserBTNOverlay" parent="." instance=ExtResource("3_l5wsb")]
+
+[connection signal="pressed" from="SaveSlot1/PlayBTN1" to="." method="_on_play_btn_1_pressed"]
+[connection signal="pressed" from="SaveSlot1/DeleteBTN1" to="." method="_on_delete_btn_1_pressed"]
+[connection signal="pressed" from="SaveSlot2/PlayBTN2" to="." method="_on_play_btn_2_pressed"]
+[connection signal="pressed" from="SaveSlot2/DeleteBTN2" to="." method="_on_delete_btn_2_pressed"]
+[connection signal="pressed" from="SaveSlot3/PlayBTN3" to="." method="_on_play_btn_3_pressed"]
+[connection signal="pressed" from="SaveSlot3/DeleteBTN3" to="." method="_on_delete_btn_3_pressed"]
+[connection signal="pressed" from="StartGamePopUp/StartYesButton" to="." method="_on_start_yes_button_pressed"]
+[connection signal="pressed" from="StartGamePopUp/StartNoButton2" to="." method="_on_start_no_button_2_pressed"]
+[connection signal="pressed" from="DeletePopUp2/DeleteYesButton" to="." method="_on_delete_yes_button_pressed"]
+[connection signal="pressed" from="DeletePopUp2/DeleteNoButton2" to="." method="_on_delete_no_button_2_pressed"]

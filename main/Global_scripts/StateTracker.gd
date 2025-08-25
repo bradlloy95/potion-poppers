@@ -2,6 +2,7 @@ extends Node
 
 var ingredients_states = {}
 var positions = {}
+var in_game : bool
 
 func register_ingredient(name_id, state: bool):
 	ingredients_states[name_id] = state

@@ -42,7 +42,8 @@ var current_contracts = {}
 var complete_contracts = {}
 
 
-func new_game_set_up():
+func new_game_set_up(save_slot):
+	var save_path = SaveManager.save_slots[save_slot]["path"]
 	level = 1
 	xp = 0
 	rep = 0
@@ -53,6 +54,6 @@ func new_game_set_up():
 	#	potion_inventory[potion_inventory] = 0
 	current_contracts = {}
 	complete_contracts = {}
-	SaveManager.save_game()
+	SaveManager.save_game(save_slot)
 	
 	print("New game set up")

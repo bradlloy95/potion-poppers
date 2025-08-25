@@ -39,6 +39,15 @@ offset_bottom = 634.0
 scale = Vector2(0.45, 0.45)
 text = "Save Game"
 
+[node name="SettingsBTN" parent="." instance=ExtResource("2_blcs8")]
+offset_left = 593.0
+offset_top = 504.0
+offset_right = 973.0
+offset_bottom = 634.0
+scale = Vector2(0.45, 0.45)
+text = "Settings"
+
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MainMenu" to="." method="_on_main_menu_pressed"]
-[connection signal="pressed" from="SaveGame" to="." method="_on_menu_btn_pressed"]
+[connection signal="pressed" from="SaveGame" to="." method="_on_save_game_pressed"]
+[connection signal="pressed" from="SettingsBTN" to="." method="_on_settings_btn_pressed"]

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://btmgs7c8knkq0"]
+[gd_scene load_steps=6 format=3 uid="uid://btmgs7c8knkq0"]
 
 [ext_resource type="Script" uid="uid://du7ycflbop6xb" path="res://main/scripts/start_menu.gd" id="1_jwbto"]
 [ext_resource type="Texture2D" uid="uid://drk4e3km1fkob" path="res://assetes/images/backgrounds/backgroundupdates.jpg" id="2_tdm0j"]
 [ext_resource type="PackedScene" uid="uid://drjum0xy8deqq" path="res://main/scenes/buttons/full_s_creen_button.tscn" id="4_ys84w"]
+[ext_resource type="PackedScene" uid="uid://btwtwrpw045tc" path="res://main/scenes/sounds/background_music.tscn" id="5_f8h8f"]
 [ext_resource type="PackedScene" uid="uid://bov1qooc62ki0" path="res://main/scenes/buttons/menu_btn.tscn" id="7_7eacl"]
 
 [node name="StartMenu" type="Node2D"]
@@ -33,6 +34,7 @@ offset_top = 552.0
 offset_right = 764.0
 offset_bottom = 682.0
 scale = Vector2(0.45, 0.45)
+disabled = true
 text = "Stats"
 
 [node name="SettingsBTN" parent="." instance=ExtResource("7_7eacl")]
@@ -48,6 +50,9 @@ offset_left = -8.0
 offset_top = 592.0
 offset_right = 56.0
 offset_bottom = 656.0
+
+[node name="BackgroundMusic" parent="." instance=ExtResource("5_f8h8f")]
+stream_paused = false
 
 [connection signal="pressed" from="QuitBTN" to="." method="_on_quit_btn_pressed"]
 [connection signal="pressed" from="StartBTN" to="." method="_on_start_btn_pressed"]
