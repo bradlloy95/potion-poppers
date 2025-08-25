@@ -32,7 +32,7 @@ func add_potion(key: String):
 		potion_inventory[key] = 1
 	else:
 		potion_inventory[key] += 1
-	print(potion_inventory)
+
 
 func remove_potion(key):
 	pass

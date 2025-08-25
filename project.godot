@@ -26,7 +26,7 @@ PlayerStats="*res://main/Global_scripts/PlayerStats.gd"
 
 [display]
 
-window/size/initial_position_type=4
+window/size/mode=4
 window/stretch/mode="canvas_items"
 
 [input]

@@ -12,8 +12,13 @@ func _on_pressed() -> void:
 	if DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 		DisplayServer.window_set_size(SettingsManager.resolution)
+		SettingsManager.fullscreen = false
+		SettingsManager.save_settings()
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+		SettingsManager.fullscreen = true
+		SettingsManager.save_settings()
+
 	_update_button_state()
 
 

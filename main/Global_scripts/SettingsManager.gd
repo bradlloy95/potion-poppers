@@ -61,9 +61,7 @@ func load_settings():
 			
 			fullscreen = bool(result.get("fullscreen", false))
 		file.close()
-		print(muted)
-		print(volume)
-		print(resolution)
+	
 	
 	# Apply immediately
 	AudioServer.set_bus_volume_db(0, volume/2)

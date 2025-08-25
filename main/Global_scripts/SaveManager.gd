@@ -30,8 +30,6 @@ func _ready() -> void:
 			save_slots[save]["save date"] = "Empty"
 
 	todays_date = Time.get_datetime_dict_from_system()
-	
-	print(save_slots)
 
 
 func save_game(save_slot):
@@ -72,7 +70,6 @@ func perm_delete_save(save_slot):
 
 
 func load_game_save_slot(save_slot):
-	print("opening file . . .")
 	var save_path = save_slots[save_slot]["path"]
 	
 	if not FileAccess.file_exists(save_path):
@@ -82,7 +79,6 @@ func load_game_save_slot(save_slot):
 		
 	var file = FileAccess.open(save_path, FileAccess.READ)
 	if file:
-		print("path found")
 		var result = JSON.parse_string(file.get_as_text())
 		if typeof(result) == TYPE_DICTIONARY:
 			PlayerStats.level = result.get("level", 0)

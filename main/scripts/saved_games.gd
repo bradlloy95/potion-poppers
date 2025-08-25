@@ -29,7 +29,7 @@ func _ready() -> void:
 		else:
 			var level = SaveManager.save_slots[save]["level"]
 			var save_date = SaveManager.save_slots[save]["save date"]
-			nodes[save]["description"].text = "Level: %s | Saved: %s" % [level, save_date]
+			nodes[save]["description"].text = "Level: %s | Saved: %s" % [int(level), save_date]
 			nodes[save]["play button"].text = "Start Game"
 			nodes[save]["delete button"].disabled = false
 			

@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dv68dsry2eapl"]
+[gd_scene load_steps=3 format=3 uid="uid://dv68dsry2eapl"]
 
 [ext_resource type="LabelSettings" uid="uid://bf045t7qwo58h" path="res://main/labelSettings/settings.tres" id="1_15ek4"]
 [ext_resource type="Script" uid="uid://dc8gguk6reram" path="res://main/scripts/saved_games.gd" id="1_ckj7w"]
-[ext_resource type="PackedScene" uid="uid://cythkqefvpgn3" path="res://main/scenes/buttons/user_btn_overlay.tscn" id="3_l5wsb"]
 
 [node name="SavedGames" type="Node2D"]
 script = ExtResource("1_ckj7w")
@@ -225,8 +224,6 @@ offset_right = 768.0
 offset_bottom = 303.0
 text = "No
 "
-
-[node name="UserBTNOverlay" parent="." instance=ExtResource("3_l5wsb")]
 
 [connection signal="pressed" from="SaveSlot1/PlayBTN1" to="." method="_on_play_btn_1_pressed"]
 [connection signal="pressed" from="SaveSlot1/DeleteBTN1" to="." method="_on_delete_btn_1_pressed"]

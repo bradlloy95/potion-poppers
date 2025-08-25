@@ -53,6 +53,5 @@ func _on_option_button_item_selected(index: int) -> void:
 
 
 func _on_back_pressed() -> void:
-	print("back")
 	SettingsManager.save_settings()
 	back.emit()

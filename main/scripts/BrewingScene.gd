@@ -95,6 +95,7 @@ func _on_brew_btn_pressed() -> void:
 		print("no brew")
 
 	clear_cauldron()
+	SaveManager.save_game(SaveManager.current_save_slot)
 
 func start_brewing() -> void:
 	$Miscellaneous/Bubbles.emitting = true       # start bubbling
